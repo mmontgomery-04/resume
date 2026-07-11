@@ -10,14 +10,14 @@
 
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --card-bg: #0f172a;
-      --accent: #38bdf8;
+      --bg: #050816;          /* primary background (kept) */
+      --bg-alt: #0d1b2a;      /* deeper contrast */
+      --card-bg: #11203f;     /* brighter card tone */
+      --accent: #38bdf8;      /* accent */
       --accent-soft: rgba(56, 189, 248, 0.15);
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: #1f2937;
+      --text-main: #f1f5f9;   /* brighter text */
+      --text-muted: #94a3b8;  /* softer muted text */
+      --border-subtle: #1e293b;
       --radius-lg: 18px;
       --radius-md: 12px;
       --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.65);
@@ -29,6 +29,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -138,7 +142,7 @@
     }
 
     .card {
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(145deg, rgba(17, 32, 63, 0.96), rgba(17, 32, 63, 0.9));
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
@@ -152,7 +156,7 @@
       box-shadow: var(--shadow-hover);
       transform: translateY(-3px);
       border-color: rgba(56, 189, 248, 0.35);
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.94));
+      background: linear-gradient(145deg, rgba(17, 32, 63, 0.98), rgba(17, 32, 63, 0.94));
     }
 
     .card-header {
@@ -214,7 +218,7 @@
       margin-right: 6px;
     }
 
-    /* Blurbs */
+    /* Blurbs (no longer used for Discipline Scope, but kept if needed elsewhere) */
     .blurb-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -260,6 +264,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      position: relative;
+      overflow: hidden;
     }
 
     .section-title span {
@@ -268,11 +274,114 @@
       background: linear-gradient(to right, var(--accent), transparent);
     }
 
+    /* Line sweep motion under section titles */
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(to right, var(--accent), transparent);
+      transition: width 0.6s ease-out;
+    }
+
+    .section-title.line-visible::after {
+      width: 60px;
+    }
+
     footer {
       margin-top: 32px;
       font-size: 0.8rem;
       color: var(--text-muted);
       text-align: center;
+    }
+
+    /* Fade-in + card lift motion */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Roadmap styles */
+    .roadmap {
+      position: relative;
+      margin: 40px 0;
+      padding: 20px 0;
+    }
+
+    .roadmap-line {
+      height: 3px;
+      background: var(--accent);
+      width: 100%;
+      position: relative;
+      border-radius: 3px;
+    }
+
+    .roadmap-point {
+      position: absolute;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      box-shadow: 0 0 0 rgba(56, 189, 248, 0.0);
+      animation: roadmapPulse 2.8s ease-in-out infinite;
+    }
+
+    .roadmap-point:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    }
+
+    .roadmap-detail {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 12px;
+      border-radius: var(--radius-md);
+      width: 260px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease-out;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .roadmap-detail strong {
+      display: block;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .roadmap-point:hover .roadmap-detail {
+      opacity: 1;
+    }
+
+    @keyframes roadmapPulse {
+      0% {
+        box-shadow: 0 0 0 rgba(56, 189, 248, 0.0);
+      }
+      50% {
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 0 rgba(56, 189, 248, 0.0);
+      }
     }
   </style>
 </head>
@@ -290,21 +399,21 @@
       <a href="#education">Education</a>
     </nav>
 
-    <header>
+    <header class="fade-section">
       <div class="name">William (Monty) Montgomery</div>
       <div class="tagline">Full-Stack Marketer · SEO/AI Search · Organic/Paid Strategy · Messaging</div>
       <div class="meta">
         <span>San Diego, CA</span>
         <span>(714) 642-7285</span>
         <span><a class="pill-link" href="mailto:monty.montgomery0401@gmail.com">monty.montgomery0401@gmail.com</a></span>
-        <span><a class="pill-link" href="https://www.linkedin.com/in/william-a-montgomery/" target="_blank">LinkedIn</a></span>
+        <span><a class="pill-link" href="https://www.linkedin.com/in/william-montgomery" target="_blank">LinkedIn</a></span>
       </div>
     </header>
 
     <main>
 
-      <!-- Summary -->
-      <section id="summary" class="grid">
+      <!-- Summary + Skills -->
+      <section id="summary" class="grid fade-section">
         <div class="card hover-tile">
           <div class="card-header">
             <div class="card-title">Summary</div>
@@ -344,46 +453,62 @@
         </div>
       </section>
 
-      <!-- Discipline Scope -->
-      <section id="scope" class="card">
+      <!-- Discipline Scope (Roadmap) -->
+      <section id="scope" class="card fade-section">
         <div class="card-header">
           <div class="section-title"><span></span>Discipline Scope</div>
         </div>
-        <div class="card-body">
-          <p class="section-note">
-            I build and operate full-funnel content systems using automated workflows, AI-powered processes, and search-first planning.
-          </p>
-          <div class="blurb-row">
-            <div class="blurb">
-              <div class="blurb-title">AI Strategy & Tech Lead</div>
-              <p>Member of CSO’s AI Team; internal lead for AI adoption, LLM strategy, workflow design, and tooling education.</p>
+        <p class="section-note">
+          I build and operate full-funnel content systems using automated workflows, AI-powered processes, and search-first planning.
+        </p>
+
+        <div class="roadmap">
+          <div class="roadmap-line"></div>
+
+          <!-- AI Strategy -->
+          <div class="roadmap-point" style="left: 5%;">
+            <div class="roadmap-detail">
+              <strong>AI Strategy & Tech Lead</strong>
+              Member of CSO’s AI Team; internal lead for AI adoption, LLM strategy, workflow design, and tooling education.
             </div>
-            <div class="blurb">
-              <div class="blurb-title">SEO Specialist</div>
-              <p>Technical audits, GEO/AEO optimization, keyword clustering, content architecture, and outranking enterprise competitors.</p>
+          </div>
+
+          <!-- SEO -->
+          <div class="roadmap-point" style="left: 25%;">
+            <div class="roadmap-detail">
+              <strong>SEO Specialist</strong>
+              Technical audits, GEO/AEO optimization, keyword clustering, content architecture, and outranking enterprise competitors.
             </div>
-            <div class="blurb">
-              <div class="blurb-title">Content Manager</div>
-              <p>Full-channel copywriting, editorial governance, SME-driven content pillars, and high-intent funnel architecture.</p>
+          </div>
+
+          <!-- Content -->
+          <div class="roadmap-point" style="left: 45%;">
+            <div class="roadmap-detail">
+              <strong>Content Manager</strong>
+              Full-channel copywriting, editorial governance, SME-driven content pillars, and high-intent funnel architecture.
             </div>
-            <div class="blurb">
-              <div class="blurb-title">Marketing Operations</div>
-              <p>Build dashboards, GA4 flows, HubSpot campaigns, and automated reporting systems.</p>
+          </div>
+
+          <!-- MarOps -->
+          <div class="roadmap-point" style="left: 65%;">
+            <div class="roadmap-detail">
+              <strong>Marketing Operations</strong>
+              Build dashboards, GA4 flows, HubSpot campaigns, and automated reporting systems.
             </div>
-            <div class="blurb">
-              <div class="blurb-title">Paid Media Strategist</div>
-              <p>Rebuild Google Ads campaigns and landing pages to reduce CPL and improve conversion visibility.</p>
-            </div>
-            <div class="blurb">
-              <div class="blurb-title">Copywriter & Social</div>
-              <p>Executive ghostwriting, StoryBrand collateral, app listing copy, press releases, and multi-campaign social calendars.</p>
+          </div>
+
+          <!-- Paid Media -->
+          <div class="roadmap-point" style="left: 85%;">
+            <div class="roadmap-detail">
+              <strong>Paid Media Strategist</strong>
+              Rebuild Google Ads campaigns and landing pages to reduce CPL and improve conversion visibility.
             </div>
           </div>
         </div>
       </section>
 
       <!-- Experience -->
-      <section id="experience" class="card">
+      <section id="experience" class="card fade-section">
         <div class="card-header">
           <div class="section-title"><span></span>Experience</div>
         </div>
@@ -454,4 +579,69 @@
               <div class="card-subtitle">Nov 2023 – Feb 2024</div>
             </div>
             <div class="hover-summary">
-              Sole copywriter across PPC, blogs
+              Sole copywriter across PPC, blogs, and executive collateral for a diversified climate and health portfolio.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Built StoryBrand-aligned messaging across multiple subsidiaries.</li>
+                <li>Produced PPC landing pages, blogs, and press releases.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Impact -->
+      <section id="impact" class="card fade-section">
+        <div class="card-header">
+          <div class="section-title"><span></span>Business Impact</div>
+        </div>
+        <p class="section-note">
+          Key measurable outcomes across SEO, AI search, content systems, and pipeline contribution.
+        </p>
+        <ul class="hover-detail" style="max-height:none;opacity:1;">
+          <li>Copilot citation growth from 43 → 218 following architecture optimization.</li>
+          <li>Form views increased 3,570 → 16,882; submissions 79 → 375.</li>
+          <li>Built 22 nurture workflows (90 emails) in 4 days with full UTM tracking.</li>
+        </ul>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="card fade-section">
+        <div class="card-header">
+          <div class="section-title"><span></span>Education</div>
+        </div>
+        <p class="section-note">
+          B.A. Communications – California State University, Fullerton
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="fade-section">
+      Built for B2B SaaS, AI search, and full-funnel content systems.
+    </footer>
+  </div>
+
+  <!-- Motion + visibility script -->
+  <script>
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            const title = entry.target.querySelector('.section-title');
+            if (title) {
+              title.classList.add('line-visible');
+            }
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll('.fade-section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
