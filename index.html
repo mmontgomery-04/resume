@@ -30,6 +30,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #000 100%);
@@ -43,11 +47,21 @@
       margin: 0 auto;
     }
 
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, rgba(5, 8, 22, 0.95), rgba(5, 8, 22, 0.85));
+      backdrop-filter: blur(10px);
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+
     nav {
       display: flex;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 12px;
       flex-wrap: wrap;
+      padding: 8px 0;
     }
 
     nav a {
@@ -121,19 +135,237 @@
       flex-direction: column;
       gap: 24px;
     }
+
+    .card {
+      background: linear-gradient(145deg, rgba(17, 32, 63, 0.96), rgba(17, 32, 63, 0.9));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.35);
+      background: linear-gradient(145deg, rgba(17, 32, 63, 0.98), rgba(17, 32, 63, 0.94));
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-title span {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), transparent);
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .tile {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 13px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .tile-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .tile-summary {
+      margin-bottom: 6px;
+    }
+
+    .tile-detail {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+    }
+
+    .tile:hover .tile-detail {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    .tile-detail ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .tile-detail li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .tile-detail li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .scope-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .scope-card:hover {
+      background: rgba(15, 23, 42, 0.96);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .scope-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .hover-tile {
+      cursor: pointer;
+    }
+
+    .hover-summary {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .hover-detail {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+      margin-top: 8px;
+    }
+
+    .hover-tile:hover .hover-detail {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    .hover-detail ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .hover-detail li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .hover-detail li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .agent-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 13px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .agent-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    .agent-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
   <div class="page">
 
-    <nav>
-      <a href="#summary">Summary</a>
-      <a href="#core-skills">Core Skills</a>
-      <a href="#discipline-scope">Discipline Scope</a>
-      <a href="#experience">Experience</a>
-      <a href="#agents">MarOps Agents</a>
-    </nav>
+    <div class="nav-wrapper">
+      <nav>
+        <a href="#summary">Summary</a>
+        <a href="#core-skills">Core Skills</a>
+        <a href="#discipline-scope">Discipline Scope</a>
+        <a href="#experience">Experience</a>
+        <a href="#agents">MarOps Agents</a>
+      </nav>
+    </div>
 
     <header>
       <div class="name">William (Monty) Montgomery</div>
@@ -148,7 +380,7 @@
 
     <main>
 
-          <!-- Summary -->
+      <!-- Summary -->
       <section id="summary" class="card">
         <div class="section-title"><span></span>Summary</div>
         <p>
@@ -165,7 +397,6 @@
           </a>
         </p>
       </section>
-
       <!-- Core Skills -->
       <section id="core-skills" class="card">
         <div class="section-title"><span></span>Core Skills</div>
@@ -257,7 +488,7 @@
         </div>
       </section>
 
-            <!-- Discipline Scope -->
+      <!-- Discipline Scope -->
       <section id="discipline-scope" class="card">
         <div class="section-title"><span></span>Discipline Scope</div>
 
@@ -311,8 +542,7 @@
         </div>
 
       </section>
-
-          <!-- Experience -->
+      <!-- Experience -->
       <section id="experience" class="card">
         <div class="section-title"><span></span>Experience</div>
 
@@ -536,4 +766,3 @@
   </div>
 </body>
 </html>
-
