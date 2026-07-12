@@ -5,19 +5,18 @@
   <title>William (Monty) Montgomery – Resume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --bg: #050816;
-      --bg-alt: #0b1020;
-      --card-bg: #0f172a;
+      --bg-alt: #0d1b2a;
+      --card-bg: #11203f;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.15);
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: #1f2937;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-subtle: #1e293b;
       --radius-lg: 18px;
       --radius-md: 12px;
       --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.65);
@@ -29,6 +28,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -44,12 +47,22 @@
       margin: 0 auto;
     }
 
-    /* NAV */
+    /* Sticky nav */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, rgba(5, 8, 22, 0.95), rgba(5, 8, 22, 0.85));
+      backdrop-filter: blur(10px);
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+
     nav {
       display: flex;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 12px;
       flex-wrap: wrap;
+      padding: 8px 0;
     }
 
     nav a {
@@ -124,21 +137,8 @@
       gap: 24px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 24px;
-      margin-bottom: 8px;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
     .card {
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(145deg, rgba(17, 32, 63, 0.96), rgba(17, 32, 63, 0.9));
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
@@ -152,103 +152,9 @@
       box-shadow: var(--shadow-hover);
       transform: translateY(-3px);
       border-color: rgba(56, 189, 248, 0.35);
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.94));
+      background: linear-gradient(145deg, rgba(17, 32, 63, 0.98), rgba(17, 32, 63, 0.94));
     }
 
-    .card-header {
-      margin-bottom: 10px;
-    }
-
-    .card-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text-main);
-    }
-
-    .card-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Hover-expand tiles */
-    .hover-tile {
-      cursor: pointer;
-    }
-
-    .hover-summary {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .hover-detail {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
-      margin-top: 8px;
-    }
-
-    .hover-tile:hover .hover-detail {
-      max-height: 300px;
-      opacity: 1;
-    }
-
-    .hover-tile ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .hover-tile li {
-      margin-bottom: 6px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .hover-tile li::before {
-      content: "•";
-      color: var(--accent);
-      margin-right: 6px;
-    }
-
-    /* Blurbs */
-    .blurb-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .blurb {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      padding: 10px 11px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .blurb-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .blurb:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(15, 23, 42, 0.96);
-      transform: translateY(-2px);
-    }
-
-    /* Section titles */
     .section-title {
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 1.1rem;
@@ -260,12 +166,246 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      position: relative;
+      overflow: hidden;
     }
 
     .section-title span {
       width: 32px;
       height: 1px;
       background: linear-gradient(to right, var(--accent), transparent);
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(to right, var(--accent), transparent);
+      transition: width 0.6s ease-out;
+    }
+
+    .section-title.line-visible::after {
+      width: 60px;
+    }
+
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .tile {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 13px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .tile-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .tile-summary {
+      margin-bottom: 6px;
+    }
+
+    .tile-detail {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+    }
+
+    .tile:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    .tile:hover .tile-detail {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    .tile-detail ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .tile-detail li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .tile-detail li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .scope-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .scope-card:hover {
+      background: rgba(15, 23, 42, 0.96);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .scope-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .exp-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 16px;
+      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .exp-header {
+      margin-bottom: 6px;
+    }
+
+    .exp-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .exp-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .exp-summary {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .exp-detail {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+    }
+
+    .exp-detail ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .exp-detail li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .exp-detail li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    .exp-card:hover .exp-detail {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .agent-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 13px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .agent-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .agent-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
     }
 
     footer {
@@ -280,178 +420,73 @@
 <body>
   <div class="page">
 
-    <!-- NAV -->
-    <nav>
-      <a href="#summary">Summary</a>
-      <a href="#skills">Skills</a>
-      <a href="#scope">Scope</a>
-      <a href="#experience">Experience</a>
-      <a href="#impact">Impact</a>
-      <a href="#education">Education</a>
-    </nav>
+    <div class="nav-wrapper">
+      <nav>
+        <a href="#summary">Summary</a>
+        <a href="#core-skills">Core Skills</a>
+        <a href="#discipline-scope">Discipline Scope</a>
+        <a href="#experience">Experience</a>
+        <a href="#agents">MarOps Agents</a>
+      </nav>
+    </div>
 
-    <header>
+    <header class="fade-section">
       <div class="name">William (Monty) Montgomery</div>
       <div class="tagline">Full-Stack Marketer · SEO/AI Search · Organic/Paid Strategy · Messaging</div>
       <div class="meta">
         <span>San Diego, CA</span>
         <span>(714) 642-7285</span>
         <span><a class="pill-link" href="mailto:monty.montgomery0401@gmail.com">monty.montgomery0401@gmail.com</a></span>
-        <span><a class="pill-link" href="https://www.linkedin.com/in/william-a-montgomery/" target="_blank">LinkedIn</a></span>
+        <span><a class="pill-link" href="https://www.linkedin.com/in/william-montgomery" target="_blank">LinkedIn</a></span>
+        <span><a class="pill-link" href="#" target="_blank">Portfolio &amp; Speaking</a></span>
       </div>
     </header>
 
     <main>
 
       <!-- Summary -->
-      <section id="summary" class="grid">
-        <div class="card hover-tile">
-          <div class="card-header">
-            <div class="card-title">Summary</div>
-            <div class="card-subtitle">Scope & Positioning</div>
-          </div>
-          <div class="hover-summary">
-            Full-stack content and SEO leader with 9 years of enterprise communications experience, focused on search-first, pipeline-aligned content systems for B2B SaaS.
-          </div>
-          <div class="hover-detail">
-            <p>
-              I combine SME-driven and ICP-specific messaging, full-channel execution, and AI-powered workflows to build scalable GTM content systems.
-            </p>
-            <p>
-              BrightonSEO Speaker (San Diego 2025): “E-E-A-T Your TOFU: Why B2B Top-of-Funnel Content Still Matters.”
-            </p>
-          </div>
-        </div>
-
-        <!-- Skills -->
-        <div id="skills" class="card hover-tile">
-          <div class="card-header">
-            <div class="card-title">Core Skills</div>
-            <div class="card-subtitle">Full-Stack Coverage</div>
-          </div>
-          <div class="hover-summary">
-            Content systems, SEO/AI search, AI strategy, marketing operations, and demand-focused growth across organic and paid.
-          </div>
-          <div class="hover-detail">
-            <ul>
-              <li>Full-funnel content leadership across blog, social, email, landing pages, and MOFU/BOFU assets.</li>
-              <li>Enterprise-level SEO strategy that ranks against major competitors and drives high-intent demand.</li>
-              <li>Cross-functional AI leadership supporting C-suite initiatives and company-wide adoption.</li>
-              <li>End-to-end MarOps execution across analytics, CMS, automation, and reporting.</li>
-              <li>Demand-driving strategy across paid media, sales enablement, and executive alignment.</li>
-            </ul>
-          </div>
-        </div>
+      <section id="summary" class="card fade-section">
+        <div class="section-title"><span></span>Summary</div>
+        <p>
+          Full-stack content and SEO leader with 9 years of enterprise communications experience. I combine SME-driven and ICP-specific messaging,
+          full-channel execution, and AI-powered workflows to build scalable GTM content systems for B2B SaaS. Specialize in search-first strategy,
+          omnichannel content, MarOps automation, and pipeline-first reporting.
+        </p>
+        <p style="margin-top:8px;">
+          BrightonSEO Speaker (San Diego 2025): "E-E-A-T Your TOFU: Why B2B Top-of-Funnel Content Still Matters."
+        </p>
+        <p style="margin-top:12px;">
+          <a class="pill-link" href="https://brightonseo.com/events/san-diego-2025/talks/eeat-your-tofu-why-topoffunnel-content-still-matters" target="_blank">
+            BrightonSEO Speaker Profile
+          </a>
+        </p>
       </section>
 
-      <!-- Discipline Scope -->
-      <section id="scope" class="card">
-        <div class="card-header">
-          <div class="section-title"><span></span>Discipline Scope</div>
-        </div>
-        <div class="card-body">
-          <p class="section-note">
-            I build and operate full-funnel content systems using automated workflows, AI-powered processes, and search-first planning.
-          </p>
-          <div class="blurb-row">
-            <div class="blurb">
-              <div class="blurb-title">AI Strategy & Tech Lead</div>
-              <p>Member of CSO’s AI Team; internal lead for AI adoption, LLM strategy, workflow design, and tooling education.</p>
+      <!-- Core Skills -->
+      <section id="core-skills" class="card fade-section">
+        <div class="section-title"><span></span>Core Skills</div>
+
+        <div class="tile-grid">
+
+          <!-- Content Strategy -->
+          <div class="tile">
+            <div class="tile-title">Content Strategy, Storytelling, Copywriting</div>
+            <div class="tile-summary">
+              Full-funnel content leadership across blog, social, email, landing pages, and MOFU/BOFU assets.
             </div>
-            <div class="blurb">
-              <div class="blurb-title">SEO Specialist</div>
-              <p>Technical audits, GEO/AEO optimization, keyword clustering, content architecture, and outranking enterprise competitors.</p>
-            </div>
-            <div class="blurb">
-              <div class="blurb-title">Content Manager</div>
-              <p>Full-channel copywriting, editorial governance, SME-driven content pillars, and high-intent funnel architecture.</p>
-            </div>
-            <div class="blurb">
-              <div class="blurb-title">Marketing Operations</div>
-              <p>Build dashboards, GA4 flows, HubSpot campaigns, and automated reporting systems.</p>
-            </div>
-            <div class="blurb">
-              <div class="blurb-title">Paid Media Strategist</div>
-              <p>Rebuild Google Ads campaigns and landing pages to reduce CPL and improve conversion visibility.</p>
-            </div>
-            <div class="blurb">
-              <div class="blurb-title">Copywriter & Social</div>
-              <p>Executive ghostwriting, StoryBrand collateral, app listing copy, press releases, and multi-campaign social calendars.</p>
+            <div class="tile-detail">
+              <ul>
+                <li>Rolled out StoryBrand at two companies to unify sales/marketing messaging.</li>
+                <li>Own blog + all social channels (LinkedIn, FB, IG, X) and email strategy.</li>
+                <li>Develop SME-driven content pillars for blogs, social, and gated assets.</li>
+                <li>Write high-volume, high-quality content across web, ads, and executive ghostwriting.</li>
+                <li>Partner with RevOps to build and track HubSpot campaigns, nurture flows, and attribution.</li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Experience -->
-      <section id="experience" class="card">
-        <div class="card-header">
-          <div class="section-title"><span></span>Experience</div>
-        </div>
-
-        <div class="experience-grid">
-
-          <!-- 1Kosmos -->
-          <article class="card hover-tile">
-            <div class="card-header">
-              <div class="card-title">Content Marketing Manager · 1Kosmos</div>
-              <div class="card-subtitle">Nov 2025 – Present</div>
-            </div>
-            <div class="hover-summary">
-              Lead omnichannel content and SEO/AI search strategy across blog, email, social, ads, landing pages, datasheets, and sales enablement.
-            </div>
-            <div class="hover-detail">
-              <ul>
-                <li>Secured #1 rankings in Google AI Overviews and top-3 visibility across AI models.</li>
-                <li>Increased daily Copilot citations from ~50 to ~450 and cited pages from 9 to ~40.</li>
-                <li>Produce 70+ assets per month across all public channels.</li>
-                <li>Build content pipeline attribution in HubSpot with RevOps.</li>
-                <li>Architect MarOps automations for blog, nurture sequences, and social reporting.</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Avantiico -->
-          <article class="card hover-tile">
-            <div class="card-header">
-              <div class="card-title">SEO & Content Lead · Avantiico</div>
-              <div class="card-subtitle">Dec 2024 – Nov 2025</div>
-            </div>
-            <div class="hover-summary">
-              Led SEO, content strategy, and site architecture for a BricksBuilder rebuild optimized for LLM visibility.
-            </div>
-            <div class="hover-detail">
-              <ul>
-                <li>Ranked multiple high-intent D365 topics #1–3 on Google.</li>
-                <li>Helped sign 50+ D365 licensing clients in five months.</li>
-                <li>Boosted sitewide organic CTR from 0.3% to 0.7%.</li>
-                <li>Rolled out StoryBrand across sales, consulting, and marketing.</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Edge -->
-          <article class="card hover-tile">
-            <div class="card-header">
-              <div class="card-title">Content Manager · The Edge Treatment Center</div>
-              <div class="card-subtitle">Mar 2024 – Nov 2024</div>
-            </div>
-            <div class="hover-summary">
-              High-volume medical and treatment content production with major traffic gains post-HCU volatility.
-            </div>
-            <div class="hover-detail">
-              <ul>
-                <li>Authored a doxycycline article that generated 1.5M clicks in 8 months.</li>
-                <li>Doubled organic traffic from 100K to 200K in 2–3 months.</li>
-                <li>Produced 2–3 long-form articles per day.</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Dalrada -->
-          <article class="card hover-tile">
-            <div class="card-header">
-              <div class="card-title">Marketing Copywriter · Dalrada</div>
-              <div class="card-subtitle">Nov 2023 – Feb 2024</div>
-            </div>
-            <div class="hover-summary">
-              Sole copywriter across PPC, blogs
+          <!-- Search Leadership -->
+          <div class="tile">
+            <div class="tile-title">Search Leadership</div>
+            <div class="tile-summary">
+              Enterprise-level SEO strategy that ranks against
