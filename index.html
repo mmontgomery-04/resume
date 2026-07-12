@@ -10,13 +10,13 @@
   <style>
     :root {
       --bg: #050816;
-      --bg-alt: #0d1b2a;
-      --card-bg: #11203f;
+      --bg-alt: #0b1020;
+      --card-bg: #0f172a;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.15);
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --border-subtle: #1e293b;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
       --radius-lg: 18px;
       --radius-md: 12px;
       --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.65);
@@ -28,10 +28,6 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -47,22 +43,11 @@
       margin: 0 auto;
     }
 
-    /* Sticky nav */
-    .nav-wrapper {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: linear-gradient(to bottom, rgba(5, 8, 22, 0.95), rgba(5, 8, 22, 0.85));
-      backdrop-filter: blur(10px);
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-    }
-
     nav {
       display: flex;
-      gap: 12px;
+      gap: 16px;
+      margin-bottom: 24px;
       flex-wrap: wrap;
-      padding: 8px 0;
     }
 
     nav a {
@@ -136,316 +121,35 @@
       flex-direction: column;
       gap: 24px;
     }
-
-    .card {
-      background: linear-gradient(145deg, rgba(17, 32, 63, 0.96), rgba(17, 32, 63, 0.9));
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 18px 20px;
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-    }
-
-    .card:hover {
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-3px);
-      border-color: rgba(56, 189, 248, 0.35);
-      background: linear-gradient(145deg, rgba(17, 32, 63, 0.98), rgba(17, 32, 63, 0.94));
-    }
-
-    .section-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-main);
-      margin-bottom: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-title span {
-      width: 32px;
-      height: 1px;
-      background: linear-gradient(to right, var(--accent), transparent);
-    }
-
-    .section-title::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      height: 2px;
-      width: 0;
-      background: linear-gradient(to right, var(--accent), transparent);
-      transition: width 0.6s ease-out;
-    }
-
-    .section-title.line-visible::after {
-      width: 60px;
-    }
-
-    .fade-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .tile-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .tile {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      padding: 12px 13px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .tile-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .tile-summary {
-      margin-bottom: 6px;
-    }
-
-    .tile-detail {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
-    }
-
-    .tile:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(15, 23, 42, 0.96);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
-    }
-
-    .tile:hover .tile-detail {
-      max-height: 400px;
-      opacity: 1;
-    }
-
-    .tile-detail ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .tile-detail li {
-      margin-bottom: 6px;
-      font-size: 0.9rem;
-    }
-
-    .tile-detail li::before {
-      content: "•";
-      color: var(--accent);
-      margin-right: 6px;
-    }
-
-    .scope-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      padding: 16px 18px;
-      margin-bottom: 16px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .scope-card:hover {
-      background: rgba(15, 23, 42, 0.96);
-      border-color: rgba(56, 189, 248, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .scope-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .exp-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      padding: 14px 14px 16px;
-      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-      cursor: pointer;
-    }
-
-    .exp-header {
-      margin-bottom: 6px;
-    }
-
-    .exp-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text-main);
-    }
-
-    .exp-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .exp-summary {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .exp-detail {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
-    }
-
-    .exp-detail ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .exp-detail li {
-      margin-bottom: 6px;
-      font-size: 0.9rem;
-    }
-
-    .exp-detail li::before {
-      content: "•";
-      color: var(--accent);
-      margin-right: 6px;
-    }
-
-    .exp-card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(15, 23, 42, 0.96);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
-    }
-
-    .exp-card:hover .exp-detail {
-      max-height: 600px;
-      opacity: 1;
-    }
-
-    .agents-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .agent-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      padding: 12px 13px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .agent-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .agent-card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(15, 23, 42, 0.96);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
-    }
-
-    footer {
-      margin-top: 32px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
   </style>
 </head>
 
 <body>
   <div class="page">
 
-    <div class="nav-wrapper">
-      <nav>
-        <a href="#summary">Summary</a>
-        <a href="#core-skills">Core Skills</a>
-        <a href="#discipline-scope">Discipline Scope</a>
-        <a href="#experience">Experience</a>
-        <a href="#agents">MarOps Agents</a>
-      </nav>
-    </div>
+    <nav>
+      <a href="#summary">Summary</a>
+      <a href="#core-skills">Core Skills</a>
+      <a href="#discipline-scope">Discipline Scope</a>
+      <a href="#experience">Experience</a>
+      <a href="#agents">MarOps Agents</a>
+    </nav>
 
-    <header class="fade-section">
+    <header>
       <div class="name">William (Monty) Montgomery</div>
       <div class="tagline">Full-Stack Marketer · SEO/AI Search · Organic/Paid Strategy · Messaging</div>
       <div class="meta">
         <span>San Diego, CA</span>
         <span>(714) 642-7285</span>
         <span><a class="pill-link" href="mailto:monty.montgomery0401@gmail.com">monty.montgomery0401@gmail.com</a></span>
-        <span><a class="pill-link" href="https://www.linkedin.com/in/william-montgomery" target="_blank">LinkedIn</a></span>
-        <span><a class="pill-link" href="#" target="_blank">Portfolio &amp; Speaking</a></span>
+        <span><a class="pill-link" href="https://www.linkedin.com/in/william-a-montgomery/" target="_blank">LinkedIn</a></span>
       </div>
     </header>
 
     <main>
 
-      <!-- Summary -->
-      <section id="summary" class="card fade-section">
+          <!-- Summary -->
+      <section id="summary" class="card">
         <div class="section-title"><span></span>Summary</div>
         <p>
           Full-stack content and SEO leader with 9 years of enterprise communications experience. I combine SME-driven and ICP-specific messaging,
@@ -453,7 +157,7 @@
           omnichannel content, MarOps automation, and pipeline-first reporting.
         </p>
         <p style="margin-top:8px;">
-          BrightonSEO Speaker (San Diego 2025): "E-E-A-T Your TOFU: Why B2B Top-of-Funnel Content Still Matters."
+          BrightonSEO Speaker (San Diego 2025): “E-E-A-T Your TOFU: Why B2B Top-of-Funnel Content Still Matters.”
         </p>
         <p style="margin-top:12px;">
           <a class="pill-link" href="https://brightonseo.com/events/san-diego-2025/talks/eeat-your-tofu-why-topoffunnel-content-still-matters" target="_blank">
@@ -463,7 +167,7 @@
       </section>
 
       <!-- Core Skills -->
-      <section id="core-skills" class="card fade-section">
+      <section id="core-skills" class="card">
         <div class="section-title"><span></span>Core Skills</div>
 
         <div class="tile-grid">
@@ -489,4 +193,347 @@
           <div class="tile">
             <div class="tile-title">Search Leadership</div>
             <div class="tile-summary">
-              Enterprise-level SEO strategy that ranks against
+              Enterprise-level SEO strategy that ranks against major competitors and drives high-intent demand.
+            </div>
+            <div class="tile-detail">
+              <ul>
+                <li>On-page and technical SEO, AI search optimization, content architecture.</li>
+                <li>1.5M clicks with one article for The Edge Treatment Center.</li>
+                <li>#1 placement in AI Overviews and #3 across all models for 1Kosmos.</li>
+                <li>Deep expertise in E-E-A-T, internal linking systems, and high-intent keyword strategy.</li>
+                <li>Built AI search strategies that surpassed Microsoft, Okta, Ping, and other enterprise vendors.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- AI Strategy -->
+          <div class="tile">
+            <div class="tile-title">AI Strategy</div>
+            <div class="tile-summary">
+              Cross-functional AI leadership supporting C-suite initiatives and company-wide adoption.
+            </div>
+            <div class="tile-detail">
+              <ul>
+                <li>Member of CSO-led AI Team at 1Kosmos; advised on LLM consolidation and tooling architecture.</li>
+                <li>Demoed and evangelized AI tooling internally; led AI education and workflow rollout.</li>
+                <li>Built agent-powered content workflows, reporting systems, and automation pipelines.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Marketing Ops -->
+          <div class="tile">
+            <div class="tile-title">Marketing Operations</div>
+            <div class="tile-summary">
+              End-to-end MarOps execution across analytics, CMS, automation, and reporting.
+            </div>
+            <div class="tile-detail">
+              <ul>
+                <li>GA4/GTM event flows, conversion tracking, and attribution.</li>
+                <li>Looker Studio dashboards for AI traffic, content performance, and funnel visibility.</li>
+                <li>HubSpot campaign setup, nurture workflows, and measuring content pipeline impact.</li>
+                <li>CMS ownership (Framer, WordPress/BricksBuilder, Contentful).</li>
+                <li>Martech troubleshooting, integrations, and workflow optimization.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Lead Gen -->
+          <div class="tile">
+            <div class="tile-title">Lead Gen / Strategic Growth</div>
+            <div class="tile-summary">
+              Demand-driving strategy across paid media, sales enablement, and executive alignment.
+            </div>
+            <div class="tile-detail">
+              <ul>
+                <li>Building GTM narratives and industry-specific campaigns.</li>
+                <li>Conversion-first Google Ads optimization and landing page testing.</li>
+                <li>StoryBrand-driven sales enablement and MOFU asset development.</li>
+                <li>Funnel design across organic, paid, social, and email.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+            <!-- Discipline Scope -->
+      <section id="discipline-scope" class="card">
+        <div class="section-title"><span></span>Discipline Scope</div>
+
+        <div class="scope-card">
+          <div class="scope-title">AI Strategy & Tech Lead</div>
+          <p>
+            Member of CSO’s AI Team; internal lead for AI adoption, LLM strategy, workflow design, and tooling education. Drive AI search visibility across AI Overviews, AI Answers, and model-specific surfaces, outperforming Tier‑1 identity vendors.
+          </p>
+        </div>
+
+        <div class="scope-card">
+          <div class="scope-title">SEO Leader</div>
+          <p>
+            Technical audits, GEO/AEO optimization, keyword clustering, content architecture, and outranking Okta, Ping, Microsoft, and other enterprise competitors across traditional and AI search surfaces.
+          </p>
+        </div>
+
+        <div class="scope-card">
+          <div class="scope-title">Content Manager</div>
+          <p>
+            Full-channel copywriting (web, blog, email, social, paid, datasheets, landing pages, whitepapers), editorial governance, SME-driven content pillars, and high-intent funnel architecture. Produce 70+ assets/month across all public channels.
+          </p>
+        </div>
+
+        <div class="scope-card">
+          <div class="scope-title">Marketing Operations</div>
+          <p>
+            Build Looker dashboards, GA4 flows, HubSpot campaigns, and automated reporting systems. Implement nurture workflows with full UTM tracking. Architect MarOps automations that scale production, improve consistency, and strengthen attribution.
+          </p>
+        </div>
+
+        <div class="scope-card">
+          <div class="scope-title">Paid Media Strategist</div>
+          <p>
+            Rebuild Google Ads campaigns and landing pages to reduce CPL by ~50% and improve conversion visibility. Built agent to review historic keyword sets and suggest optimizations.
+          </p>
+        </div>
+
+        <div class="scope-card">
+          <div class="scope-title">Copywriter / Editor</div>
+          <p>
+            Executive ghostwriting, StoryBrand collateral, app listing copy, press releases, and company-wide brand voice ownership.
+          </p>
+        </div>
+
+        <div class="scope-card">
+          <div class="scope-title">Social Media Manager</div>
+          <p>
+            Multi-campaign calendars, SME amplification, scripting, and cross-channel community growth.
+          </p>
+        </div>
+
+      </section>
+
+          <!-- Experience -->
+      <section id="experience" class="card">
+        <div class="section-title"><span></span>Experience</div>
+
+        <div class="experience-grid">
+
+          <!-- 1Kosmos -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">Content Marketing Manager · 1Kosmos</div>
+              <div class="card-subtitle">Nov 2025 – Present</div>
+            </div>
+            <div class="hover-summary">
+              Lead omnichannel content and SEO/AI search strategy across blog, email, social, ads, landing pages, datasheets, and sales enablement.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Secured #1 rankings in Google AI Overviews and top‑3 visibility across AI models.</li>
+                <li>Increased daily Copilot citations from ~50 → ~450 and cited pages from 9 → ~40.</li>
+                <li>Produce 70+ assets per month across all public channels.</li>
+                <li>Own SEO/AI search management, keyword clustering, content architecture, and AI search visibility.</li>
+                <li>Build content pipeline attribution in HubSpot with RevOps.</li>
+                <li>Architect MarOps automations for blog, nurture sequences, and social reporting.</li>
+                <li>Serve on CSO-led AI Team; advise on LLM consolidation and internal AI adoption.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Avantiico -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">SEO & Content Lead · Avantiico</div>
+              <div class="card-subtitle">Dec 2024 – Nov 2025</div>
+            </div>
+            <div class="hover-summary">
+              Led SEO, content strategy, and site architecture for a BricksBuilder rebuild optimized for LLM visibility.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Ranked multiple high‑intent D365 topics #1–3 on Google.</li>
+                <li>Helped sign 50+ D365 licensing clients in five months.</li>
+                <li>Boosted sitewide organic CTR from 0.3% → 0.7%.</li>
+                <li>Built GA4 flows and Looker dashboards for AI traffic and funnel visibility.</li>
+                <li>Rolled out StoryBrand across sales, consulting, and marketing.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Edge Treatment Center -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">Content Manager · The Edge Treatment Center</div>
+              <div class="card-subtitle">Mar 2024 – Nov 2024</div>
+            </div>
+            <div class="hover-summary">
+              High-volume medical and treatment content production with major traffic gains post‑HCU volatility.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Authored a doxycycline article that generated 1.5M clicks in 8 months.</li>
+                <li>Doubled organic traffic from 100K → 200K in 2–3 months.</li>
+                <li>Produced 2–3 long‑form articles per day (sometimes 5+ pages).</li>
+                <li>Built annual social strategy with SM manager; wrote YouTube scripts.</li>
+                <li>Managed freelancer content and enforced brand voice + on‑page SEO.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Dalrada -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">Marketing Copywriter · Dalrada</div>
+              <div class="card-subtitle">Nov 2023 – Feb 2024</div>
+            </div>
+            <div class="hover-summary">
+              Sole copywriter across PPC ads, blogs, landing pages, emails, press releases, and executive thought leadership.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Wrote and edited copy for Google Ads, LinkedIn Ads, and web refreshes.</li>
+                <li>Created technical SOPs and documentation for marketing tools and workflows.</li>
+                <li>Collaborated with marketing leadership on landing page strategy and ad messaging.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- KWSM -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">Copywriter & Account Manager · KWSM</div>
+              <div class="card-subtitle">Oct 2021 – Nov 2023</div>
+            </div>
+            <div class="hover-summary">
+              Managed 4 high‑touch clients directly, leading monthly strategy and reporting across web, social, email, and paid.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Delivered a 300% traffic lift for a family law firm (62 → 249 sessions).</li>
+                <li>Added 78 first‑page keywords in 6 months; doubled organic leads.</li>
+                <li>Wrote for 8–10 clients weekly across blogs, email, landing pages, press releases, and social calendars.</li>
+                <li>Contributed to an EVP campaign later nominated for a German marketing award.</li>
+                <li>Learned and co‑taught StoryBrand; applied it across client messaging.</li>
+                <li>Worked across WordPress, HubSpot, Moz, Mailchimp, Buffer, Canva, Cision, and AI tools.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Samsung Semiconductor -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">Freelance Copywriter · Samsung Semiconductor</div>
+              <div class="card-subtitle">Apr 2024 – Jun 2024</div>
+            </div>
+            <div class="hover-summary">
+              Contract role via Eastridge Workforce Solutions supporting employer branding and internal communications.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Wrote internal social content, newsletters, and site copy.</li>
+                <li>Handled proofing and editorial cleanup for internal comms.</li>
+                <li>Delivered fast‑turn content for multiple internal teams.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- VIIA Hemp Company -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">Freelance Creative Copywriter · VIIA Hemp Company</div>
+              <div class="card-subtitle">Mar 2024 – Jun 2024</div>
+            </div>
+            <div class="hover-summary">
+              Short-term project-based role focused on product and category content.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Wrote web copy, category pages, and product pages.</li>
+                <li>Produced thought leadership content for brand positioning.</li>
+                <li>Used Ahrefs for keyword research and content direction.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Denver North City Lifestyle -->
+          <article class="card hover-tile">
+            <div class="card-header">
+              <div class="card-title">Managing Editor / Head Staff Writer · Denver North City Lifestyle</div>
+              <div class="card-subtitle">Nov 2022 – Mar 2024</div>
+            </div>
+            <div class="hover-summary">
+              Interviewed business owners and wrote feature stories aligned with seasonal issues.
+            </div>
+            <div class="hover-detail">
+              <ul>
+                <li>Interviewed local business owners across Denver.</li>
+                <li>Wrote monthly feature articles for digital and print.</li>
+                <li>Handled proofing and editing prior to publishing.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- MarOps Agents -->
+      <section id="agents" class="card">
+        <div class="section-title"><span></span>MarOps Agents & Automations (Elvex)</div>
+
+        <div class="agents-grid">
+
+          <div class="agent-card">
+            <div class="agent-title">Blog Automator</div>
+            <p>
+              Agent plugged with competitor analysis tactics, on-page SEO best practices, and RAG-style content structuring for LLM optimization.
+              Replaced a $7K/mo SEO agency and produced 4 of the company’s top-cited AI search articles in 2026.
+            </p>
+          </div>
+
+          <div class="agent-card">
+            <div class="agent-title">Social Media Coordinator Agent</div>
+            <p>
+              Links to Wrike, Notion, and Aryshare to produce content, request graphics, schedule posts, and answer reporting queries without manual action.
+              Covers evergreen and event-related posts, freeing time for campaign-first social content.
+            </p>
+          </div>
+
+          <div class="agent-card">
+            <div class="agent-title">Datasheet Generator</div>
+            <p>
+              Generates on-brand datasheets for product and sales teams. One of the most widely used internal agents.
+            </p>
+          </div>
+
+          <div class="agent-card">
+            <div class="agent-title">Website Intelligence Agent</div>
+            <p>
+              With a Vector x Slack setup, this agent reads two weeks of visitor data, pulls job title + UTM info, identifies visitors for BDR follow-up,
+              and sends scheduled summaries to sales and RevOps.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="card">
+        <div class="section-title"><span></span>Education</div>
+        <p><strong>California State University, Long Beach</strong></p>
+        <p>B.A. Communication Studies — 2020 · GPA: 3.9</p>
+        <ul style="margin-top:8px; list-style:none; padding-left:0;">
+          <li>• Member, Student Communication Association (SCA)</li>
+          <li>• Speech Tutor, Hauth Speech Center</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <footer>
+      © 2026 William (Monty) Montgomery — Portfolio & Resume
+    </footer>
+
+  </div>
+</body>
+</html>
+
