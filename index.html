@@ -333,6 +333,34 @@ main {
   color: var(--text-main);
   margin-bottom: 6px;
 }
+/* Icon idle animation (very subtle breathing effect) */
+@keyframes iconPulse {
+  0%   { transform: translateY(0); opacity: 0.9; }
+  50%  { transform: translateY(-2px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.9; }
+}
+
+.agent-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  color: var(--accent);
+  animation: iconPulse 3s ease-in-out infinite;
+}
+
+/* Hover lift + glow */
+.agent-card:hover .agent-icon {
+  transform: translateY(-4px);
+  transition: transform 0.25s ease-out;
+}
+
+/* Strict 2×2 grid */
+.agents-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  gap: 20px 24px;
+  margin-top: 16px;
+}
 
 footer {
   margin-top: 32px;
@@ -648,15 +676,28 @@ footer {
 
   <div class="agents-grid">
 
+    <!-- 1: Datasheet Generator -->
     <div class="agent-card">
-      <div class="agent-title">Blog Automator</div>
+      <div class="agent-icon">📄</div>
+      <div class="agent-title">Datasheet Generator</div>
       <p>
-        Agent plugged with competitor analysis tactics, on‑page SEO best practices, and RAG‑style content structuring for LLM optimization.
-        Replaced a $7K/mo SEO agency and produced 4 of the company's top‑cited AI search articles in 2026.
+        Generates on‑brand datasheets for product and sales teams. One of the most widely used internal agents.
       </p>
     </div>
 
+    <!-- 2: Blog Automator -->
     <div class="agent-card">
+      <div class="agent-icon">📝</div>
+      <div class="agent-title">Blog Automator</div>
+      <p>
+        Agent plugged with competitor analysis tactics, on‑page SEO best practices, and RAG‑style content structuring for LLM optimization.
+        Replaced a $7K/mo SEO agency and produced 4 of the company’s top‑cited AI search articles in 2026.
+      </p>
+    </div>
+
+    <!-- 3: Social Media Coordinator Agent -->
+    <div class="agent-card">
+      <div class="agent-icon">📣</div>
       <div class="agent-title">Social Media Coordinator Agent</div>
       <p>
         Links to Wrike, Notion, and Aryshare to produce content, request graphics, schedule posts, and answer reporting queries without manual action.
@@ -664,14 +705,9 @@ footer {
       </p>
     </div>
 
+    <!-- 4: Website Intelligence Agent -->
     <div class="agent-card">
-      <div class="agent-title">Datasheet Generator</div>
-      <p>
-        Generates on‑brand datasheets for product and sales teams. One of the most widely used internal agents.
-      </p>
-    </div>
-
-    <div class="agent-card">
+      <div class="agent-icon">📊</div>
       <div class="agent-title">Website Intelligence Agent</div>
       <p>
         With a Vector x Slack setup, this agent reads two weeks of visitor data, pulls job title + UTM info, identifies visitors for BDR follow‑up,
