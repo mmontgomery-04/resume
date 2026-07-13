@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>William (Monty) Montgomery – Resume</title>
+  <title>William (Monty) Montgomery – Online Resume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -10,7 +10,6 @@
   <style>
     :root {
       --bg: #050816;
-      --bg-alt: #0b1020;
       --card-bg: #0f172a;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.15);
@@ -51,8 +50,6 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: linear-gradient(to bottom, rgba(5, 8, 22, 0.95), rgba(5, 8, 22, 0.85));
-      backdrop-filter: blur(10px);
       padding-bottom: 8px;
       margin-bottom: 24px;
     }
@@ -190,8 +187,6 @@
       font-size: 0.9rem;
       color: var(--text-muted);
       transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-      cursor: pointer;
-      overflow: hidden;
     }
 
     .tile-title {
@@ -206,18 +201,6 @@
 
     .tile-summary {
       margin-bottom: 6px;
-    }
-
-    .tile-detail {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
-    }
-
-    .tile:hover .tile-detail {
-      max-height: 400px;
-      opacity: 1;
     }
 
     .tile-detail ul {
@@ -235,33 +218,6 @@
       content: "•";
       color: var(--accent);
       margin-right: 6px;
-    }
-
-    .scope-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      padding: 16px 18px;
-      margin-bottom: 16px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .scope-card:hover {
-      background: rgba(15, 23, 42, 0.96);
-      border-color: rgba(56, 189, 248, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .scope-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-main);
-      margin-bottom: 6px;
     }
 
     .experience-grid {
@@ -345,6 +301,57 @@
       margin-bottom: 6px;
     }
 
+    .constellation {
+      margin-top: 16px;
+      position: relative;
+    }
+
+    .constellation svg {
+      width: 100%;
+      max-width: 480px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .constellation circle {
+      fill: var(--accent);
+      stroke: rgba(56, 189, 248, 0.4);
+      stroke-width: 1.5;
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .constellation line {
+      stroke: rgba(148, 163, 184, 0.7);
+      stroke-width: 1;
+    }
+
+    .constellation .m-outline {
+      stroke: rgba(148, 163, 184, 0.4);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .constellation circle:hover {
+      transform: scale(1.3);
+      opacity: 1;
+    }
+
+    .scope-labels {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      justify-content: center;
+    }
+
+    .scope-labels span::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
     footer {
       margin-top: 32px;
       font-size: 0.8rem;
@@ -384,12 +391,12 @@
       <section id="summary" class="card">
         <div class="section-title"><span></span>Summary</div>
         <p>
-          Full-stack content and SEO leader with 9 years of enterprise communications experience. I combine SME-driven and ICP-specific messaging,
-          full-channel execution, and AI-powered workflows to build scalable GTM content systems for B2B SaaS. Specialize in search-first strategy,
-          omnichannel content, MarOps automation, and pipeline-first reporting.
+          I'm a full-stack content and SEO leader with 10 years of enterprise communications experience. I combine SME-driven and ICP-specific messaging,
+          full-channel execution, and AI-powered workflows to build scalable GTM content systems for B2B SaaS. I specialize in search-first strategy,
+          omnichannel content, MarOps automations, and pipeline-first reporting.
         </p>
-        <p style="margin-top:8px;">
-          BrightonSEO Speaker (San Diego 2025): “E-E-A-T Your TOFU: Why B2B Top-of-Funnel Content Still Matters.”
+        <p style="margin-top:8px; font-weight:600;">
+          BrightonSEO Speaker (San Diego 2025): "E-E-A-T Your TOFU: Why B2B Top-of-Funnel Content Still Matters."
         </p>
         <p style="margin-top:12px;">
           <a class="pill-link" href="https://brightonseo.com/events/san-diego-2025/talks/eeat-your-tofu-why-topoffunnel-content-still-matters" target="_blank">
@@ -397,90 +404,61 @@
           </a>
         </p>
       </section>
+
       <!-- Core Skills -->
       <section id="core-skills" class="card">
         <div class="section-title"><span></span>Core Skills</div>
 
         <div class="tile-grid">
 
-          <!-- Content Strategy -->
           <div class="tile">
-            <div class="tile-title">Content Strategy, Storytelling, Copywriting</div>
+            <div class="tile-title">Content Strategy & Copywriting</div>
             <div class="tile-summary">
-              Full-funnel content leadership across blog, social, email, landing pages, and MOFU/BOFU assets.
+              Full-funnel content systems across blog, web, email, social, and MOFU/BOFU assets with 5+ years of dedicated copywriting experience.
             </div>
             <div class="tile-detail">
               <ul>
-                <li>Rolled out StoryBrand at two companies to unify sales/marketing messaging.</li>
-                <li>Own blog + all social channels (LinkedIn, FB, IG, X) and email strategy.</li>
-                <li>Develop SME-driven content pillars for blogs, social, and gated assets.</li>
-                <li>Write high-volume, high-quality content across web, ads, and executive ghostwriting.</li>
-                <li>Partner with RevOps to build and track HubSpot campaigns, nurture flows, and attribution.</li>
+                <li>Build SME-driven content pillars and editorial calendars tied to ICPs and funnel stages.</li>
+                <li>Own brand voice, executive ghostwriting, and StoryBrand-aligned messaging across channels.</li>
               </ul>
             </div>
           </div>
 
-          <!-- Search Leadership -->
           <div class="tile">
-            <div class="tile-title">Search Leadership</div>
+            <div class="tile-title">SEO & AI Search</div>
             <div class="tile-summary">
-              Enterprise-level SEO strategy that ranks against major competitors and drives high-intent demand.
+              Search-first strategy that ranks against enterprise competitors across traditional SERPs and AI surfaces.
             </div>
             <div class="tile-detail">
               <ul>
-                <li>On-page and technical SEO, AI search optimization, content architecture.</li>
-                <li>1.5M clicks with one article for The Edge Treatment Center.</li>
-                <li>#1 placement in AI Overviews and #3 across all models for 1Kosmos.</li>
-                <li>Deep expertise in E-E-A-T, internal linking systems, and high-intent keyword strategy.</li>
-                <li>Built AI search strategies that surpassed Microsoft, Okta, Ping, and other enterprise vendors.</li>
+                <li>Architect keyword clusters, content structures, and internal linking systems for high-intent queries.</li>
+                <li>Optimize for AI Overviews, AI Answers, and model-specific visibility to drive qualified demand.</li>
               </ul>
             </div>
           </div>
 
-          <!-- AI Strategy -->
           <div class="tile">
-            <div class="tile-title">AI Strategy</div>
+            <div class="tile-title">Lead Gen & Pipeline Attribution</div>
             <div class="tile-summary">
-              Cross-functional AI leadership supporting C-suite initiatives and company-wide adoption.
+              Demand programs built with HubSpot and RevOps alignment to connect content performance to pipeline.
             </div>
             <div class="tile-detail">
               <ul>
-                <li>Member of CSO-led AI Team at 1Kosmos; advised on LLM consolidation and tooling architecture.</li>
-                <li>Demoed and evangelized AI tooling internally; led AI education and workflow rollout.</li>
-                <li>Built agent-powered content workflows, reporting systems, and automation pipelines.</li>
+                <li>Design nurture flows, campaigns, and MOFU assets that move prospects into sales conversations.</li>
+                <li>Partner with RevOps to define UTM strategy, build reports, and attribute content to revenue.</li>
               </ul>
             </div>
           </div>
 
-          <!-- Marketing Ops -->
           <div class="tile">
-            <div class="tile-title">Marketing Operations</div>
+            <div class="tile-title">AI Tooling & MarOps</div>
             <div class="tile-summary">
-              End-to-end MarOps execution across analytics, CMS, automation, and reporting.
+              AI-powered workflows and marketing operations that scale production, reduce manual lift, and improve visibility.
             </div>
             <div class="tile-detail">
               <ul>
-                <li>GA4/GTM event flows, conversion tracking, and attribution.</li>
-                <li>Looker Studio dashboards for AI traffic, content performance, and funnel visibility.</li>
-                <li>HubSpot campaign setup, nurture workflows, and measuring content pipeline impact.</li>
-                <li>CMS ownership (Framer, WordPress/BricksBuilder, Contentful).</li>
-                <li>Martech troubleshooting, integrations, and workflow optimization.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Lead Gen -->
-          <div class="tile">
-            <div class="tile-title">Lead Gen / Strategic Growth</div>
-            <div class="tile-summary">
-              Demand-driving strategy across paid media, sales enablement, and executive alignment.
-            </div>
-            <div class="tile-detail">
-              <ul>
-                <li>Building GTM narratives and industry-specific campaigns.</li>
-                <li>Conversion-first Google Ads optimization and landing page testing.</li>
-                <li>StoryBrand-driven sales enablement and MOFU asset development.</li>
-                <li>Funnel design across organic, paid, social, and email.</li>
+                <li>Build agents and automations for blog production, social scheduling, datasheets, and reporting.</li>
+                <li>Own GA4/GTM flows, Looker dashboards, and HubSpot campaign architecture for consistent measurement.</li>
               </ul>
             </div>
           </div>
@@ -488,60 +466,58 @@
         </div>
       </section>
 
-      <!-- Discipline Scope -->
+      <!-- Discipline Scope (Constellation M) -->
       <section id="discipline-scope" class="card">
         <div class="section-title"><span></span>Discipline Scope</div>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">
+          Hover over the constellation points to explore my operating scope across organic, paid, AI tooling, search, content, and social.
+        </p>
 
-        <div class="scope-card">
-          <div class="scope-title">AI Strategy & Tech Lead</div>
-          <p>
-            Member of CSO’s AI Team; internal lead for AI adoption, LLM strategy, workflow design, and tooling education. Drive AI search visibility across AI Overviews, AI Answers, and model-specific surfaces, outperforming Tier‑1 identity vendors.
-          </p>
+        <div class="constellation">
+          <svg viewBox="0 0 100 60">
+            <!-- M outline -->
+            <polyline class="m-outline" points="10,50 10,10 30,30 50,10 70,30 90,10 90,50" />
+
+            <!-- Connecting lines between nodes -->
+            <line x1="15" y1="40" x2="25" y2="25" />
+            <line x1="25" y1="25" x2="40" y2="20" />
+            <line x1="40" y1="20" x2="55" y2="25" />
+            <line x1="55" y1="25" x2="70" y2="20" />
+            <line x1="70" y1="20" x2="85" y2="30" />
+
+            <!-- Nodes -->
+            <circle cx="15" cy="40" r="2.2">
+              <title>Organic Strategy</title>
+            </circle>
+            <circle cx="25" cy="25" r="2.2">
+              <title>Paid Media Strategy</title>
+            </circle>
+            <circle cx="40" cy="20" r="2.2">
+              <title>AI Tooling</title>
+            </circle>
+            <circle cx="55" cy="25" r="2.2">
+              <title>Search Leadership</title>
+            </circle>
+            <circle cx="70" cy="20" r="2.2">
+              <title>Omnichannel Content Management</title>
+            </circle>
+            <circle cx="85" cy="30" r="2.2">
+              <title>Copywriting & Editing / Social Media Management</title>
+            </circle>
+          </svg>
+
+          <div class="scope-labels">
+            <span>Organic Strategy</span>
+            <span>Paid Media Strategy</span>
+            <span>AI Tooling</span>
+            <span>Search Leadership</span>
+            <span>Omnichannel Content Management</span>
+            <span>Copywriting & Editing</span>
+            <span>Social Media Management</span>
+          </div>
         </div>
-
-        <div class="scope-card">
-          <div class="scope-title">SEO Leader</div>
-          <p>
-            Technical audits, GEO/AEO optimization, keyword clustering, content architecture, and outranking Okta, Ping, Microsoft, and other enterprise competitors across traditional and AI search surfaces.
-          </p>
-        </div>
-
-        <div class="scope-card">
-          <div class="scope-title">Content Manager</div>
-          <p>
-            Full-channel copywriting (web, blog, email, social, paid, datasheets, landing pages, whitepapers), editorial governance, SME-driven content pillars, and high-intent funnel architecture. Produce 70+ assets/month across all public channels.
-          </p>
-        </div>
-
-        <div class="scope-card">
-          <div class="scope-title">Marketing Operations</div>
-          <p>
-            Build Looker dashboards, GA4 flows, HubSpot campaigns, and automated reporting systems. Implement nurture workflows with full UTM tracking. Architect MarOps automations that scale production, improve consistency, and strengthen attribution.
-          </p>
-        </div>
-
-        <div class="scope-card">
-          <div class="scope-title">Paid Media Strategist</div>
-          <p>
-            Rebuild Google Ads campaigns and landing pages to reduce CPL by ~50% and improve conversion visibility. Built agent to review historic keyword sets and suggest optimizations.
-          </p>
-        </div>
-
-        <div class="scope-card">
-          <div class="scope-title">Copywriter / Editor</div>
-          <p>
-            Executive ghostwriting, StoryBrand collateral, app listing copy, press releases, and company-wide brand voice ownership.
-          </p>
-        </div>
-
-        <div class="scope-card">
-          <div class="scope-title">Social Media Manager</div>
-          <p>
-            Multi-campaign calendars, SME amplification, scripting, and cross-channel community growth.
-          </p>
-        </div>
-
       </section>
+
       <!-- Experience -->
       <section id="experience" class="card">
         <div class="section-title"><span></span>Experience</div>
