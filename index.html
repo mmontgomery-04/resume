@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>William (Monty) Montgomery – Online Resume</title>
+  <title>William (Monty) Montgomery – Resume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -220,6 +220,55 @@
       margin-right: 6px;
     }
 
+    /* Discipline Scope Dropdown */
+    .dropdown {
+      margin-top: 12px;
+    }
+
+    .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 10px 0;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .dropdown-header:hover {
+      color: var(--accent);
+    }
+
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out;
+      margin-top: 8px;
+    }
+
+    .dropdown.open .dropdown-content {
+      max-height: 500px;
+    }
+
+    .dropdown-content ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .dropdown-content li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .dropdown-content li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    /* Experience */
     .experience-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -267,6 +316,7 @@
       margin-right: 6px;
     }
 
+    /* MarOps Agents */
     .agents-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -301,57 +351,6 @@
       margin-bottom: 6px;
     }
 
-    .constellation {
-      margin-top: 16px;
-      position: relative;
-    }
-
-    .constellation svg {
-      width: 100%;
-      max-width: 480px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .constellation circle {
-      fill: var(--accent);
-      stroke: rgba(56, 189, 248, 0.4);
-      stroke-width: 1.5;
-      transition: transform var(--transition-fast), opacity var(--transition-fast);
-      cursor: pointer;
-    }
-
-    .constellation line {
-      stroke: rgba(148, 163, 184, 0.7);
-      stroke-width: 1;
-    }
-
-    .constellation .m-outline {
-      stroke: rgba(148, 163, 184, 0.4);
-      stroke-width: 1.5;
-      fill: none;
-    }
-
-    .constellation circle:hover {
-      transform: scale(1.3);
-      opacity: 1;
-    }
-
-    .scope-labels {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 16px;
-      justify-content: center;
-    }
-
-    .scope-labels span::before {
-      content: "• ";
-      color: var(--accent);
-    }
-
     footer {
       margin-top: 32px;
       font-size: 0.8rem;
@@ -359,6 +358,15 @@
       text-align: center;
     }
   </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dropdown = document.querySelector(".dropdown-header");
+      dropdown.addEventListener("click", () => {
+        dropdown.parentElement.classList.toggle("open");
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -463,57 +471,56 @@
             </div>
           </div>
 
+          <div class="tile">
+            <div class="tile-title">Analytics & Stakeholder Reporting</div>
+            <div class="tile-summary">
+              Build dashboards, attribution flows, and reporting systems that give executives clear visibility into performance.
+            </div>
+            <div class="tile-detail">
+              <ul>
+                <li>Develop Looker Studio dashboards for AI traffic, content performance, and funnel visibility.</li>
+                <li>Implement GA4/GTM event flows and conversion tracking for accurate measurement.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="tile-title">Messaging (StoryBrand)</div>
+            <div class="tile-summary">
+              StoryBrand-driven messaging frameworks applied across web, email, social, ads, and sales enablement.
+            </div>
+            <div class="tile-detail">
+              <ul>
+                <li>Roll out StoryBrand across teams to unify sales and marketing narratives.</li>
+                <li>Write high-volume, high-quality messaging aligned to ICP pain points and funnel stages.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <!-- Discipline Scope (Constellation M) -->
+      <!-- Discipline Scope (Dropdown) -->
       <section id="discipline-scope" class="card">
         <div class="section-title"><span></span>Discipline Scope</div>
-        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">
-          Hover over the constellation points to explore my operating scope across organic, paid, AI tooling, search, content, and social.
-        </p>
 
-        <div class="constellation">
-          <svg viewBox="0 0 100 60">
-            <!-- M outline -->
-            <polyline class="m-outline" points="10,50 10,10 30,30 50,10 70,30 90,10 90,50" />
+        <div class="dropdown">
+          <div class="dropdown-header">
+            <span>Click to expand</span>
+            <span>▼</span>
+          </div>
 
-            <!-- Connecting lines between nodes -->
-            <line x1="15" y1="40" x2="25" y2="25" />
-            <line x1="25" y1="25" x2="40" y2="20" />
-            <line x1="40" y1="20" x2="55" y2="25" />
-            <line x1="55" y1="25" x2="70" y2="20" />
-            <line x1="70" y1="20" x2="85" y2="30" />
-
-            <!-- Nodes -->
-            <circle cx="15" cy="40" r="2.2">
-              <title>Organic Strategy</title>
-            </circle>
-            <circle cx="25" cy="25" r="2.2">
-              <title>Paid Media Strategy</title>
-            </circle>
-            <circle cx="40" cy="20" r="2.2">
-              <title>AI Tooling</title>
-            </circle>
-            <circle cx="55" cy="25" r="2.2">
-              <title>Search Leadership</title>
-            </circle>
-            <circle cx="70" cy="20" r="2.2">
-              <title>Omnichannel Content Management</title>
-            </circle>
-            <circle cx="85" cy="30" r="2.2">
-              <title>Copywriting & Editing / Social Media Management</title>
-            </circle>
-          </svg>
-
-          <div class="scope-labels">
-            <span>Organic Strategy</span>
-            <span>Paid Media Strategy</span>
-            <span>AI Tooling</span>
-            <span>Search Leadership</span>
-            <span>Omnichannel Content Management</span>
-            <span>Copywriting & Editing</span>
-            <span>Social Media Management</span>
+          <div class="dropdown-content">
+            <ul>
+              <li>Organic Strategy</li>
+              <li>Paid Media Strategy</li>
+              <li>AI Tooling</li>
+              <li>Search Leadership</li>
+              <li>Omnichannel Content Management</li>
+              <li>
+                <li>Copywriting & Editing</li>
+              <li>Social Media Management</li>
+            </ul>
           </div>
         </div>
       </section>
