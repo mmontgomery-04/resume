@@ -176,6 +176,48 @@ main {
   margin-top: 12px;
 }
 
+/* Typography Scaling — Name, Tagline, Section Titles, Subheaders */
+
+/* Name — 1.5× larger */
+.name {
+  font-size: 3.6rem;   /* was 2.4rem */
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* Tagline — scaled proportionally */
+.tagline {
+  font-size: 1.35rem;  /* was 1.05rem */
+  color: var(--text-muted);
+}
+
+/* Section Titles — Summary, Core Skills, Experience, etc. */
+.section-title {
+  font-size: 1.35rem;  /* was 1.1rem */
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  margin-bottom: 10px; /* slight bump for spacing */
+}
+
+/* Subheaders inside cards — job titles, tile titles, agent titles */
+.card-title,
+.tile-title,
+.agent-title {
+  font-size: 1.05rem;  /* was 0.9rem */
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+/* Card subtitles — dates under job titles */
+.card-subtitle {
+  font-size: 0.95rem;  /* slightly larger but still subtle */
+  color: var(--text-muted);
+}
+
 /* Summary Wins */
 .summary-wins {
   display: flex;
