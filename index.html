@@ -130,7 +130,7 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .card {
@@ -142,6 +142,7 @@ main {
   position: relative;
   overflow: hidden;
   transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  margin-bottom: 24px;
 }
 
 .card:hover {
@@ -170,11 +171,43 @@ main {
   background: linear-gradient(to right, var(--accent), transparent);
 }
 
+/* Summary Wins */
+.summary-wins {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.summary-wins .win {
+  text-align: center;
+}
+
+.summary-wins .win-number {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.summary-wins .win-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Core Skills */
 .tile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-top: 12px;
+  justify-items: center;
+}
+
+.tile-grid .tile:nth-last-child(2),
+.tile-grid .tile:nth-last-child(1) {
+  grid-column: span 1;
 }
 
 .tile {
@@ -339,18 +372,23 @@ footer {
 <section id="summary" class="card">
   <div class="section-title"><span></span>Summary</div>
   <p>
-    I'm a full-stack content and SEO leader with 10 years of enterprise communications experience. I combine SME-driven and ICP-specific messaging,
-    full-channel execution, and AI-powered workflows to build scalable GTM content systems for B2B SaaS. I specialize in search-first strategy,
-    omnichannel content, MarOps automations, and pipeline-first reporting.
+    A full‑stack content and SEO leader with a decade of enterprise communications experience, building scalable GTM systems that unify messaging, search visibility, and channel execution. Blends SME‑driven insights with ICP‑specific storytelling to produce high‑intent content that performs across organic, paid, email, and sales enablement. Known for architecting AI‑powered workflows, omnichannel content engines, and reporting frameworks that tie production directly to pipeline.
   </p>
-  <p style="margin-top:8px; font-weight:600;">
-    BrightonSEO Speaker (San Diego 2025): "E-E-A-T Your TOFU: Why B2B Top-of-Funnel Content Still Matters."
-  </p>
-  <p style="margin-top:12px;">
-    <a class="pill-link" href="https://brightonseo.com/events/san-diego-2025/talks/eeat-your-tofu-why-topoffunnel-content-still-matters" target="_blank">
-      BrightonSEO Speaker Profile
-    </a>
-  </p>
+
+  <div class="summary-wins">
+    <div class="win">
+      <div class="win-number">17M+</div>
+      <div class="win-label">Pipeline Generated</div>
+    </div>
+    <div class="win">
+      <div class="win-number">1.2M</div>
+      <div class="win-label">Clicks from One Blog</div>
+    </div>
+    <div class="win">
+      <div class="win-number">2025</div>
+      <div class="win-label">BrightonSEO Speaker</div>
+    </div>
+  </div>
 </section>
 
 <!-- Core Skills -->
@@ -471,9 +509,9 @@ footer {
     <!-- Avantiico -->
     <article class="card hover-tile">
       <div class="card-header">
-        <div class="card-title">SEO & Content Lead · Avantiico</div>
+        <div class="card-title">SEO & Content Lead ·
         <div class="card-subtitle">Dec 2024 – Nov 2025</div>
-      </div
+      </div>
       <div class="hover-summary">
         Led SEO, content strategy, and site architecture for a BricksBuilder rebuild optimized for LLM visibility.
       </div>
