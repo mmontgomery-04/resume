@@ -79,24 +79,26 @@ nav a:hover {
   transform: translateY(-1px);
 }
 
+/* HEADER */
 header {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 32px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
 .name {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 2.4rem;
+  font-size: 3.6rem;
   font-weight: 700;
   letter-spacing: 0.03em;
 }
 
 .tagline {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.35rem;
   color: var(--text-muted);
+  margin-bottom: 6px;
 }
 
 .meta {
@@ -107,32 +109,7 @@ header {
   color: var(--text-muted);
 }
 
-.pill-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: rgba(15, 23, 42, 0.7);
-  color: var(--text-main);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-}
-
-.pill-link:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
+/* CARDS */
 .card {
   background: linear-gradient(145deg, rgba(17, 32, 63, 0.96), rgba(17, 32, 63, 0.9));
   border-radius: var(--radius-lg);
@@ -152,14 +129,15 @@ main {
   background: linear-gradient(145deg, rgba(17, 32, 63, 0.98), rgba(17, 32, 63, 0.94));
 }
 
+/* SECTION TITLES */
 .section-title {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-main);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -171,96 +149,55 @@ main {
   background: linear-gradient(to right, var(--accent), transparent);
 }
 
-/* Add spacing between paragraphs inside cards */
+/* SUMMARY PARAGRAPH SPACING */
 .card p + p {
   margin-top: 12px;
 }
 
-/* Summary Wins */
+/* SUMMARY WINS — NEW 2×3 GRID */
 .summary-wins {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 32px;
   margin-top: 24px;
   margin-bottom: 12px;
 }
 
 .summary-wins .win {
   text-align: center;
+  padding: 10px 8px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
 }
 
 .summary-wins .win-number {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent);
 }
 
 .summary-wins .win-label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   margin-top: 4px;
 }
 
-.summary-link {
-  display: flex;
-  justify-content: center;
-  margin-top: 12px;
+.summary-wins .win:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(15, 23, 42, 0.95);
 }
 
-/* Typography Scaling — Name, Tagline, Section Titles, Subheaders */
-
-/* Name — 1.5× larger */
-.name {
-  font-size: 3.6rem;   /* was 2.4rem */
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
-
-/* Tagline — scaled proportionally */
-.tagline {
-  font-size: 1.35rem;  /* was 1.05rem */
-  color: var(--text-muted);
-}
-
-/* Section Titles — Summary, Core Skills, Experience, etc. */
-.section-title {
-  font-size: 1.35rem;  /* was 1.1rem */
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-main);
-  margin-bottom: 10px; /* slight bump for spacing */
-}
-
-/* Subheaders inside cards — job titles, tile titles, agent titles */
-.card-title,
-.tile-title,
-.agent-title {
-  font-size: 1.05rem;  /* was 0.9rem */
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-main);
-}
-
-/* Card subtitles — dates under job titles */
-.card-subtitle {
-  font-size: 0.95rem;  /* slightly larger but still subtle */
-  color: var(--text-muted);
-}
-
-/* Core Skills */
+/* CORE SKILLS — HOVER REVEAL */
 .tile-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   justify-items: center;
-}
-
-.tile-grid .tile:nth-last-child(2),
-.tile-grid .tile:nth-last-child(1) {
-  grid-column: span 1;
 }
 
 .tile {
@@ -273,18 +210,27 @@ main {
   transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.tile-title {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-main);
-  margin-bottom: 6px;
+.tile-summary {
+  margin-bottom: 4px;
 }
 
-.tile-summary {
-  margin-bottom: 6px;
+.tile-detail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+.tile:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(15, 23, 42, 0.96);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
+}
+
+.tile:hover .tile-detail {
+  max-height: 200px;
+  opacity: 1;
 }
 
 .tile-detail ul {
@@ -304,7 +250,7 @@ main {
   margin-right: 6px;
 }
 
-/* Experience */
+/* EXPERIENCE */
 .experience-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -352,7 +298,7 @@ main {
   margin-right: 6px;
 }
 
-/* MarOps Agents */
+/* MAROPS AGENTS */
 .agents-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -379,40 +325,60 @@ main {
 
 .agent-title {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-main);
   margin-bottom: 6px;
 }
-/* Icon idle animation (very subtle breathing effect) */
-@keyframes iconPulse {
-  0%   { transform: translateY(0); opacity: 0.9; }
-  50%  { transform: translateY(-2px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.9; }
-}
 
-.agent-icon {
-  font-size: 1.6rem;
-  margin-bottom: 8px;
-  color: var(--accent);
-  animation: iconPulse 3s ease-in-out infinite;
-}
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  body {
+    padding: 24px 12px 48px;
+  }
 
-/* Hover lift + glow */
-.agent-card:hover .agent-icon {
-  transform: translateY(-4px);
-  transition: transform 0.25s ease-out;
-}
+  .page {
+    max-width: 100%;
+  }
 
-/* Strict 2×2 grid */
-.agents-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: auto;
-  gap: 20px 24px;
-  margin-top: 16px;
+  .name {
+    font-size: 2.6rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .card {
+    padding: 16px 14px 18px;
+  }
+
+  .summary-wins {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 20px;
+  }
+
+  .summary-wins .win-number {
+    font-size: 1.4rem;
+  }
+
+  .tile-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .experience-grid {
+    gap: 14px;
+  }
+
+  .agents-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 footer {
@@ -438,12 +404,24 @@ footer {
 
 <header>
   <div class="name">William (Monty) Montgomery</div>
-  <div class="tagline">Full-Stack Marketer · SEO/AI Search · Organic/Paid Strategy · Messaging</div>
+
+  <div class="tagline">
+    Full-Stack Marketer · SEO/AI Search · Organic/Paid Strategy · Messaging
+  </div>
+
   <div class="meta">
     <span>San Diego, CA</span>
     <span>(714) 642-7285</span>
-    <span><a class="pill-link" href="mailto:monty.montgomery0401@gmail.com">monty.montgomery0401@gmail.com</a></span>
-    <span><a class="pill-link" href="https://www.linkedin.com/in/william-a-montgomery/" target="_blank">LinkedIn</a></span>
+    <span>
+      <a class="pill-link" href="mailto:monty.montgomery0401@gmail.com">
+        monty.montgomery0401@gmail.com
+      </a>
+    </span>
+    <span>
+      <a class="pill-link" href="https://www.linkedin.com/in/william-a-montgomery/" target="_blank">
+        LinkedIn
+      </a>
+    </span>
   </div>
 </header>
 
@@ -452,50 +430,59 @@ footer {
 <!-- Summary -->
 <section id="summary" class="card">
   <div class="section-title"><span></span>Summary</div>
+
   <p>
-Full-stack marketer with 10 years of content and enterprise communication experience. Content strategy, SEO/AI search, and messaging are my zones. Currently strategizing and producing 70+ assets per month across the website, email, social, paid media, and sales enablement, alongside RevOps projects like nurture workflows and MarOps agents/automations to replace vendors. 
-  </p>
-  <p>
-Own reporting across content, search, and content/pipeline attribution using HubSpot, GA4, and social tooling. Regularly translate SME insights into targeted storytelling and distribute content with a focus on brand visiblity, lead quality, and volume, not traffic.
+    Full-stack marketer with 10 years of content and enterprise communication experience. Content strategy, SEO/AI search, and messaging are my zones. Currently strategizing and producing 70+ assets per month across the website, email, social, paid media, and sales enablement, alongside RevOps projects like nurture workflows and MarOps agents/automations to replace vendors. Delivered a full Gartner MQ campaign (25 assets across blog, email, social, and web) in one day — a project that typically requires 2–3 weeks.
   </p>
 
-<div class="summary-wins">
+  <p>
+    Own reporting across content, search, and content/pipeline attribution using HubSpot, GA4, and social tooling. Regularly translate SME insights into targeted storytelling and distribute content with a focus on brand visibility, lead quality, and volume, not traffic.
+  </p>
 
-  <div class="win">
-    <div class="win-number">17M+</div>
-    <div class="win-label">Pipeline Generated</div>
+  <div class="summary-wins">
+
+    <div class="win">
+      <div class="win-number">17M+</div>
+      <div class="win-label">Pipeline Generated</div>
+    </div>
+
+    <div class="win">
+      <div class="win-number">1.2M</div>
+      <div class="win-label">Clicks from One Blog</div>
+    </div>
+
+    <div class="win">
+      <div class="win-number">79 → 375</div>
+      <div class="win-label">Monthly Conversions QoQ</div>
+    </div>
+
+    <div class="win">
+      <div class="win-number">30 → 500/day</div>
+      <div class="win-label">Copilot Citations</div>
+    </div>
+
+    <div class="win">
+      <div class="win-number">2025</div>
+      <div class="win-label">BrightonSEO Speaker</div>
+    </div>
+
+    <!-- NEW GARTNER MQ STAT -->
+    <div class="win">
+      <div class="win-number">25 Assets · 1 Day</div>
+      <div class="win-label">Gartner MQ Campaign</div>
+    </div>
+
   </div>
 
-  <div class="win">
-    <div class="win-number">1.2M</div>
-    <div class="win-label">Clicks from One Blog</div>
+  <div class="summary-link">
+    <a class="pill-link"
+       href="https://brightonseo.com/events/san-diego-2025/talks/eeat-your-tofu-why-topoffunnel-content-still-matters"
+       target="_blank">
+       BrightonSEO Speaker Profile
+    </a>
   </div>
-
-  <div class="win">
-    <div class="win-number">79 → 375</div>
-    <div class="win-label">Monthly Conversions QoQ</div>
-  </div>
-
-  <div class="win">
-    <div class="win-number">30 → 500/day</div>
-    <div class="win-label">Copilot Citations</div>
-  </div>
-
-  <div class="win">
-    <div class="win-number">2025</div>
-    <div class="win-label">BrightonSEO Speaker</div>
-  </div>
-
-</div>
-
-<div class="summary-link">
-  <a class="pill-link"
-     href="https://brightonseo.com/events/san-diego-2025/talks/eeat-your-tofu-why-topoffunnel-content-still-matters"
-     target="_blank">
-     BrightonSEO Speaker Profile
-  </a>
-</div>
 </section>
+
 
 <!-- Core Skills -->
 <section id="core-skills" class="card">
@@ -596,9 +583,11 @@ Own reporting across content, search, and content/pipeline attribution using Hub
         <div class="card-title">Content Marketing Manager · 1Kosmos</div>
         <div class="card-subtitle">Nov 2025 – Present</div>
       </div>
+
       <div class="hover-summary">
         Lead omnichannel content and SEO/AI search strategy across blog, email, social, ads, landing pages, datasheets, and sales enablement.
       </div>
+
       <div class="hover-detail">
         <ul>
           <li>Secured #1 rankings in Google AI Overviews and top‑3 visibility across AI models.</li>
@@ -608,31 +597,34 @@ Own reporting across content, search, and content/pipeline attribution using Hub
           <li>Build content pipeline attribution in HubSpot with RevOps.</li>
           <li>Architect MarOps automations for blog, nurture sequences, and social reporting.</li>
           <li>Serve on CSO-led AI Team; advise on LLM consolidation and internal AI adoption.</li>
+
+          <!-- ⭐ NEW GARTNER MQ BULLET -->
+          <li>Delivered a full Gartner MQ campaign (25 assets across blog, social, email, and web) in 24 hours; typical turnaround is 2–3 weeks.</li>
         </ul>
       </div>
     </article>
 
     <!-- Avantiico -->
-<article class="card hover-tile">
-  <div class="card-header">
-    <div class="card-title">SEO & Content Lead · Avantiico</div>
-    <div class="card-subtitle">Dec 2024 – Nov 2025</div>
-  </div>
+    <article class="card hover-tile">
+      <div class="card-header">
+        <div class="card-title">SEO & Content Lead · Avantiico</div>
+        <div class="card-subtitle">Dec 2024 – Nov 2025</div>
+      </div>
 
-  <div class="hover-summary">
-    Led SEO, content strategy, and site architecture for a BricksBuilder rebuild optimized for LLM visibility.
-  </div>
+      <div class="hover-summary">
+        Led SEO, content strategy, and site architecture for a BricksBuilder rebuild optimized for LLM visibility.
+      </div>
 
-  <div class="hover-detail">
-    <ul>
-      <li>Ranked multiple high‑intent D365 topics #1–3 on Google.</li>
-      <li>Helped sign 50+ D365 licensing clients in five months.</li>
-      <li>Boosted sitewide organic CTR from 0.3% → 0.7%.</li>
-      <li>Built GA4 flows and Looker dashboards for AI traffic and funnel visibility.</li>
-      <li>Rolled out StoryBrand across sales, consulting, and marketing.</li>
-    </ul>
-  </div>
-</article>
+      <div class="hover-detail">
+        <ul>
+          <li>Ranked multiple high‑intent D365 topics #1–3 on Google.</li>
+          <li>Helped sign 50+ D365 licensing clients in five months.</li>
+          <li>Boosted sitewide organic CTR from 0.3% → 0.7%.</li>
+          <li>Built GA4 flows and Looker dashboards for AI traffic and funnel visibility.</li>
+          <li>Rolled out StoryBrand across sales, consulting, and marketing.</li>
+        </ul>
+      </div>
+    </article>
 
     <!-- The Edge Treatment Center -->
     <article class="card hover-tile">
@@ -640,9 +632,11 @@ Own reporting across content, search, and content/pipeline attribution using Hub
         <div class="card-title">Content Manager · The Edge Treatment Center</div>
         <div class="card-subtitle">Mar 2024 – Nov 2024</div>
       </div>
+
       <div class="hover-summary">
         High-volume medical and treatment content production with major traffic gains post‑HCU volatility.
       </div>
+
       <div class="hover-detail">
         <ul>
           <li>Authored a doxycycline article that generated 1.5M clicks in 8 months.</li>
@@ -660,9 +654,11 @@ Own reporting across content, search, and content/pipeline attribution using Hub
         <div class="card-title">Marketing Copywriter · Dalrada</div>
         <div class="card-subtitle">Nov 2023 – Feb 2024</div>
       </div>
+
       <div class="hover-summary">
         Sole copywriter across PPC ads, blogs, landing pages, emails, press releases, and executive thought leadership.
       </div>
+
       <div class="hover-detail">
         <ul>
           <li>Wrote and edited copy for Google Ads, LinkedIn Ads, and web refreshes.</li>
@@ -678,9 +674,11 @@ Own reporting across content, search, and content/pipeline attribution using Hub
         <div class="card-title">Copywriter & Account Manager · KWSM</div>
         <div class="card-subtitle">Oct 2021 – Nov 2023</div>
       </div>
+
       <div class="hover-summary">
         Managed 4 high‑touch clients directly, leading monthly strategy and reporting across web, social, email, and paid.
       </div>
+
       <div class="hover-detail">
         <ul>
           <li>Delivered a 300% traffic lift for a family law firm (62 → 249 sessions).</li>
@@ -699,9 +697,11 @@ Own reporting across content, search, and content/pipeline attribution using Hub
         <div class="card-title">Freelance Copywriter · Samsung Semiconductor</div>
         <div class="card-subtitle">Apr 2024 – Jun 2024</div>
       </div>
+
       <div class="hover-summary">
         Contract role via Eastridge Workforce Solutions supporting employer branding and internal communications.
       </div>
+
       <div class="hover-detail">
         <ul>
           <li>Wrote internal social content, newsletters, and site copy.</li>
@@ -717,9 +717,11 @@ Own reporting across content, search, and content/pipeline attribution using Hub
         <div class="card-title">Freelance Creative Copywriter · VIIA Hemp Company</div>
         <div class="card-subtitle">Mar 2024 – Jun 2024</div>
       </div>
+
       <div class="hover-summary">
         Short‑term project‑based role focused on product and category content.
       </div>
+
       <div class="hover-detail">
         <ul>
           <li>Wrote web copy, category pages, and product pages.</li>
@@ -735,9 +737,11 @@ Own reporting across content, search, and content/pipeline attribution using Hub
         <div class="card-title">Managing Editor / Head Staff Writer · Denver North City Lifestyle</div>
         <div class="card-subtitle">Nov 2022 – Mar 2024</div>
       </div>
+
       <div class="hover-summary">
         Interviewed business owners and wrote feature stories aligned with seasonal issues.
       </div>
+
       <div class="hover-detail">
         <ul>
           <li>Interviewed local business owners across Denver.</li>
@@ -798,16 +802,20 @@ Own reporting across content, search, and content/pipeline attribution using Hub
   </div>
 </section>
 
+
 <!-- Education -->
 <section id="education" class="card">
   <div class="section-title"><span></span>Education</div>
+
   <p><strong>California State University, Long Beach</strong></p>
   <p>B.A. Communication Studies – 2020 · GPA: 3.9</p>
+
   <ul style="margin-top:8px; list-style:none; padding-left:0;">
     <li>• Member, Student Communication Association (SCA)</li>
     <li>• Speech Tutor, Hauth Speech Center</li>
   </ul>
 </section>
+
 
 </main>
 
