@@ -23,15 +23,7 @@
   --transition-fast: 0.18s ease-out;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
@@ -41,28 +33,13 @@ body {
   padding: 32px 16px 64px;
 }
 
-.page {
-  max-width: 1120px;
-  margin: 0 auto;
-}
+.page { max-width: 1120px; margin: 0 auto; }
 
-.nav-wrapper {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  padding-bottom: 8px;
-  margin-bottom: 24px;
-}
-
-nav {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 8px 0;
-}
-
+/* NAV */
+.nav-wrapper { position: sticky; top: 0; z-index: 20; padding-bottom: 8px; margin-bottom: 24px; }
+nav { display: flex; gap: 12px; flex-wrap: wrap; padding: 8px 0; }
 nav a {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: 'Space Grotesk';
   font-size: 0.85rem;
   padding: 6px 12px;
   border-radius: 999px;
@@ -72,325 +49,153 @@ nav a {
   text-decoration: none;
   transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
-
-nav a:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
+nav a:hover { background: var(--accent-soft); border-color: var(--accent); transform: translateY(-1px); }
 
 /* HEADER */
-header {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 28px;
-}
-
+header { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
 .name {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: 'Space Grotesk';
   font-size: 3.6rem;
   font-weight: 700;
   letter-spacing: 0.03em;
 }
-
 .tagline {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: 'Space Grotesk';
   font-size: 1.35rem;
   color: var(--text-muted);
   margin-bottom: 6px;
 }
+.meta { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 0.95rem; color: var(--text-muted); }
 
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 24px;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-/* CARDS */
+/* CARD */
 .card {
   background: linear-gradient(145deg, rgba(17, 32, 63, 0.96), rgba(17, 32, 63, 0.9));
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-soft);
   padding: 18px 18px 20px;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
   margin-bottom: 24px;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
 }
-
 .card:hover {
   box-shadow: var(--shadow-hover);
   transform: translateY(-3px);
   border-color: rgba(56, 189, 248, 0.35);
-  background: linear-gradient(145deg, rgba(17, 32, 63, 0.98), rgba(17, 32, 63, 0.94));
 }
 
 /* SECTION TITLES */
 .section-title {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: 'Space Grotesk';
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-main);
   margin-bottom: 10px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .section-title span {
   width: 32px;
   height: 1px;
   background: linear-gradient(to right, var(--accent), transparent);
 }
 
-/* SUMMARY PARAGRAPH SPACING */
-.card p + p {
-  margin-top: 12px;
+/* SUMMARY DIVIDER */
+.summary-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  margin: 20px 0;
 }
 
-/* SUMMARY WINS — NEW 2×3 GRID */
+/* SUMMARY WINS */
 .summary-wins {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px 32px;
   margin-top: 24px;
-  margin-bottom: 12px;
 }
-
 .summary-wins .win {
   text-align: center;
   padding: 10px 8px;
   border-radius: 12px;
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid var(--border-subtle);
-  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
+  transition: var(--transition-fast);
 }
-
-.summary-wins .win-number {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-.summary-wins .win-label {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
 .summary-wins .win:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
   border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(15, 23, 42, 0.95);
 }
+.summary-link {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+}
+.summary-link a { margin-left: auto; margin-right: auto; }
 
-/* CORE SKILLS — HOVER REVEAL */
+/* CORE SKILLS */
 .tile-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  justify-items: center;
 }
-
 .tile {
   background: rgba(15, 23, 42, 0.9);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   padding: 12px 13px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: var(--transition-fast);
+}
+.tile:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+.tile-title {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tile-title .icon {
+  font-size: 1rem;
+  color: var(--accent);
 }
 
-.tile-summary {
-  margin-bottom: 4px;
-}
-
+/* Hover reveal */
 .tile-detail {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
   transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
 }
-
-.tile:hover {
-  border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(15, 23, 42, 0.96);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
-}
-
 .tile:hover .tile-detail {
   max-height: 200px;
   opacity: 1;
 }
 
-.tile-detail ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.tile-detail li {
-  margin-bottom: 6px;
-  font-size: 0.9rem;
-}
-
-.tile-detail li::before {
-  content: "•";
-  color: var(--accent);
-  margin-right: 6px;
-}
-
 /* EXPERIENCE */
-.experience-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-  margin-top: 12px;
-}
+.experience-grid { display: grid; gap: 16px; }
 
-.hover-tile {
-  cursor: pointer;
-}
-
-.hover-summary {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-.hover-detail {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
-  margin-top: 8px;
-}
-
-.hover-tile:hover .hover-detail {
-  max-height: 600px;
-  opacity: 1;
-}
-
-.hover-detail ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.hover-detail li {
-  margin-bottom: 6px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.hover-detail li::before {
-  content: "•";
-  color: var(--accent);
-  margin-right: 6px;
-}
-
-/* MAROPS AGENTS */
+/* MAROPS AGENTS — FIXED 2×2 GRID + EQUAL HEIGHT */
 .agents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 12px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
 }
-
 .agent-card {
   background: rgba(15, 23, 42, 0.9);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
-  padding: 12px 13px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-}
+  padding: 14px 14px 16px;
+  min-height: 100%;
+  display: flex;
+  flex-direction
 
-.agent-card:hover {
-  border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(15, 23, 42, 0.96);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
-}
-
-.agent-title {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-main);
-  margin-bottom: 6px;
-}
-
-/* MOBILE OPTIMIZATION */
-@media (max-width: 768px) {
-  body {
-    padding: 24px 12px 48px;
-  }
-
-  .page {
-    max-width: 100%;
-  }
-
-  .name {
-    font-size: 2.6rem;
-  }
-
-  .tagline {
-    font-size: 1.1rem;
-  }
-
-  .section-title {
-    font-size: 1.1rem;
-  }
-
-  .card {
-    padding: 16px 14px 18px;
-  }
-
-  .summary-wins {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px 20px;
-  }
-
-  .summary-wins .win-number {
-    font-size: 1.4rem;
-  }
-
-  .tile-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .experience-grid {
-    gap: 14px;
-  }
-
-  .agents-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-footer {
-  margin-top: 32px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-</style>
-</head>
-
-<body>
+  <body>
 <div class="page">
 
 <div class="nav-wrapper">
@@ -411,7 +216,7 @@ footer {
 
   <div class="meta">
     <span>San Diego, CA</span>
-    <span>(714) 642-7285</span>
+    <span>[714] 642‑7285</span>
     <span>
       <a class="pill-link" href="mailto:monty.montgomery0401@gmail.com">
         monty.montgomery0401@gmail.com
@@ -425,8 +230,6 @@ footer {
   </div>
 </header>
 
-<main>
-
 <!-- Summary -->
 <section id="summary" class="card">
   <div class="section-title"><span></span>Summary</div>
@@ -438,6 +241,9 @@ footer {
   <p>
     Own reporting across content, search, and content/pipeline attribution using HubSpot, GA4, and social tooling. Regularly translate SME insights into targeted storytelling and distribute content with a focus on brand visibility, lead quality, and volume, not traffic.
   </p>
+
+  <!-- Divider -->
+  <div class="summary-divider"></div>
 
   <div class="summary-wins">
 
@@ -466,7 +272,6 @@ footer {
       <div class="win-label">BrightonSEO Speaker</div>
     </div>
 
-    <!-- NEW GARTNER MQ STAT -->
     <div class="win">
       <div class="win-number">25 Assets · 1 Day</div>
       <div class="win-label">Gartner MQ Campaign</div>
@@ -483,15 +288,18 @@ footer {
   </div>
 </section>
 
-
 <!-- Core Skills -->
 <section id="core-skills" class="card">
   <div class="section-title"><span></span>Core Skills</div>
 
   <div class="tile-grid">
 
+    <!-- Content Strategy -->
     <div class="tile">
-      <div class="tile-title">Content Strategy & Copywriting</div>
+      <div class="tile-title">
+        <span class="icon">📝</span>
+        Content Strategy & Copywriting
+      </div>
       <div class="tile-summary">
         Full-funnel content systems across blog, web, email, social, and MOFU/BOFU assets with 5+ years of dedicated copywriting experience.
       </div>
@@ -503,8 +311,12 @@ footer {
       </div>
     </div>
 
+    <!-- SEO & AI Search -->
     <div class="tile">
-      <div class="tile-title">SEO & AI Search</div>
+      <div class="tile-title">
+        <span class="icon">🔍</span>
+        SEO & AI Search
+      </div>
       <div class="tile-summary">
         Search-first strategy that ranks against enterprise competitors across traditional SERPs and AI surfaces.
       </div>
@@ -516,8 +328,12 @@ footer {
       </div>
     </div>
 
+    <!-- Lead Gen & Attribution -->
     <div class="tile">
-      <div class="tile-title">Lead Gen & Pipeline Attribution</div>
+      <div class="tile-title">
+        <span class="icon">📈</span>
+        Lead Gen & Pipeline Attribution
+      </div>
       <div class="tile-summary">
         Demand programs built with HubSpot and RevOps alignment to connect content performance to pipeline.
       </div>
@@ -529,8 +345,12 @@ footer {
       </div>
     </div>
 
+    <!-- AI Tooling & MarOps -->
     <div class="tile">
-      <div class="tile-title">AI Tooling & MarOps</div>
+      <div class="tile-title">
+        <span class="icon">🤖</span>
+        AI Tooling & MarOps
+      </div>
       <div class="tile-summary">
         AI-powered workflows and marketing operations that scale production, reduce manual lift, and improve visibility.
       </div>
@@ -542,8 +362,12 @@ footer {
       </div>
     </div>
 
+    <!-- Analytics & Reporting -->
     <div class="tile">
-      <div class="tile-title">Analytics & Stakeholder Reporting</div>
+      <div class="tile-title">
+        <span class="icon">📊</span>
+        Analytics & Stakeholder Reporting
+      </div>
       <div class="tile-summary">
         Build dashboards, attribution flows, and reporting systems that give executives clear visibility into performance.
       </div>
@@ -555,8 +379,12 @@ footer {
       </div>
     </div>
 
+    <!-- Messaging -->
     <div class="tile">
-      <div class="tile-title">Messaging (StoryBrand)</div>
+      <div class="tile-title">
+        <span class="icon">💬</span>
+        Messaging (StoryBrand)
+      </div>
       <div class="tile-summary">
         StoryBrand-driven messaging frameworks applied across web, email, social, ads, and sales enablement.
       </div>
@@ -597,8 +425,6 @@ footer {
           <li>Build content pipeline attribution in HubSpot with RevOps.</li>
           <li>Architect MarOps automations for blog, nurture sequences, and social reporting.</li>
           <li>Serve on CSO-led AI Team; advise on LLM consolidation and internal AI adoption.</li>
-
-          <!-- ⭐ NEW GARTNER MQ BULLET -->
           <li>Delivered a full Gartner MQ campaign (25 assets across blog, social, email, and web) in 24 hours; typical turnaround is 2–3 weeks.</li>
         </ul>
       </div>
@@ -693,106 +519,54 @@ footer {
 
     <!-- Samsung Semiconductor -->
     <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Freelance Copywriter · Samsung Semiconductor</div>
-        <div class="card-subtitle">Apr 2024 – Jun 2024</div>
-      </div>
 
-      <div class="hover-summary">
-        Contract role via Eastridge Workforce Solutions supporting employer branding and internal communications.
-      </div>
-
-      <div class="hover-detail">
-        <ul>
-          <li>Wrote internal social content, newsletters, and site copy.</li>
-          <li>Handled proofing and editorial cleanup for internal comms.</li>
-          <li>Delivered fast‑turn content for multiple internal teams.</li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- VIIA Hemp Company -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Freelance Creative Copywriter · VIIA Hemp Company</div>
-        <div class="card-subtitle">Mar 2024 – Jun 2024</div>
-      </div>
-
-      <div class="hover-summary">
-        Short‑term project‑based role focused on product and category content.
-      </div>
-
-      <div class="hover-detail">
-        <ul>
-          <li>Wrote web copy, category pages, and product pages.</li>
-          <li>Produced thought leadership content for brand positioning.</li>
-          <li>Used Ahrefs for keyword research and content direction.</li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Denver North City Lifestyle -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Managing Editor / Head Staff Writer · Denver North City Lifestyle</div>
-        <div class="card-subtitle">Nov 2022 – Mar 2024</div>
-      </div>
-
-      <div class="hover-summary">
-        Interviewed business owners and wrote feature stories aligned with seasonal issues.
-      </div>
-
-      <div class="hover-detail">
-        <ul>
-          <li>Interviewed local business owners across Denver.</li>
-          <li>Wrote monthly feature articles for digital and print.</li>
-          <li>Handled proofing and editing prior to publishing.</li>
-        </ul>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- MarOps Agents -->
+  <!-- MarOps Agents -->
 <section id="agents" class="card">
   <div class="section-title"><span></span>MarOps Agents & Automations</div>
 
   <div class="agents-grid">
 
-    <!-- 1: Datasheet Generator -->
+    <!-- Datasheet Generator -->
     <div class="agent-card">
-      <div class="agent-icon">📄</div>
-      <div class="agent-title">Datasheet Generator</div>
+      <div class="agent-title">
+        <span class="icon">📄</span>
+        Datasheet Generator
+      </div>
       <p>
         Generates on‑brand datasheets for product and sales teams. One of the most widely used internal agents.
       </p>
     </div>
 
-    <!-- 2: Blog Automator -->
+    <!-- Blog Automator -->
     <div class="agent-card">
-      <div class="agent-icon">📝</div>
-      <div class="agent-title">Blog Automator</div>
+      <div class="agent-title">
+        <span class="icon">📝</span>
+        Blog Automator
+      </div>
       <p>
         Agent plugged with competitor analysis tactics, on‑page SEO best practices, and RAG‑style content structuring for LLM optimization.
         Replaced a $7K/mo SEO agency and produced 4 of the company’s top‑cited AI search articles in 2026.
       </p>
     </div>
 
-    <!-- 3: Social Media Coordinator Agent -->
+    <!-- Social Media Coordinator Agent -->
     <div class="agent-card">
-      <div class="agent-icon">📣</div>
-      <div class="agent-title">Social Media Coordinator Agent</div>
+      <div class="agent-title">
+        <span class="icon">📣</span>
+        Social Media Coordinator Agent
+      </div>
       <p>
         Links to Wrike, Notion, and Aryshare to produce content, request graphics, schedule posts, and answer reporting queries without manual action.
         Covers evergreen and event‑related posts, freeing time for campaign‑first social content.
       </p>
     </div>
 
-    <!-- 4: Website Intelligence Agent -->
+    <!-- Website Intelligence Agent -->
     <div class="agent-card">
-      <div class="agent-icon">📊</div>
-      <div class="agent-title">Website Intelligence Agent</div>
+      <div class="agent-title">
+        <span class="icon">📊</span>
+        Website Intelligence Agent
+      </div>
       <p>
         With a Vector x Slack setup, this agent reads two weeks of visitor data, pulls job title + UTM info, identifies visitors for BDR follow‑up,
         and sends scheduled summaries to sales and RevOps.
@@ -802,7 +576,6 @@ footer {
   </div>
 </section>
 
-
 <!-- Education -->
 <section id="education" class="card">
   <div class="section-title"><span></span>Education</div>
@@ -810,12 +583,11 @@ footer {
   <p><strong>California State University, Long Beach</strong></p>
   <p>B.A. Communication Studies – 2020 · GPA: 3.9</p>
 
-  <ul style="margin-top:8px; list-style:none; padding-left:0;">
+  <ul style="margin-top: 10px; list-style: none; padding-left: 0;">
     <li>• Member, Student Communication Association (SCA)</li>
     <li>• Speech Tutor, Hauth Speech Center</li>
   </ul>
 </section>
-
 
 </main>
 
