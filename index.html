@@ -1,596 +1,625 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>William (Monty) Montgomery - Resume</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<title>Monty Montgomery | Growth Systems Portfolio</title>
+
+https://fonts.googleapis.com
+<link://fonts.gstatic.com
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;lay=swap
 
 <style>
-:root {
-  --bg: #050816;
-  --card-bg: #0f172a;
-  --accent: #38bdf8;
-  --accent-soft: rgba(56, 189, 248, 0.15);
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --border-subtle: #1f2937;
-  --radius-lg: 18px;
-  --radius-md: 12px;
-  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.65);
-  --shadow-hover: 0 22px 55px rgba(15, 23, 42, 0.85);
-  --transition-fast: 0.18s ease-out;
+
+:root{
+    --bg:#FAF8F3;
+    --text:#222222;
+    --muted:#666666;
+    --accent:#2F6B5F;
+    --border:#DCD8CE;
+    --card:#FFFFFF;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(0,0,0,.05);
+    --max:1200px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #000 100%);
-  color: var(--text-main);
-  line-height: 1.6;
-  padding: 32px 16px 64px;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-.page { max-width: 1120px; margin: 0 auto; }
-
-/* NAV */
-.nav-wrapper { position: sticky; top: 0; z-index: 20; padding-bottom: 8px; margin-bottom: 24px; }
-nav { display: flex; gap: 12px; flex-wrap: wrap; padding: 8px 0; }
-nav a {
-  font-family: 'Space Grotesk';
-  font-size: 0.85rem;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-main);
-  text-decoration: none;
-  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-}
-nav a:hover { background: var(--accent-soft); border-color: var(--accent); transform: translateY(-1px); }
-
-/* HEADER */
-header { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-.name {
-  font-family: 'Space Grotesk';
-  font-size: 3.6rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
-.tagline {
-  font-family: 'Space Grotesk';
-  font-size: 1.35rem;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-.meta { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 0.95rem; color: var(--text-muted); }
-
-/* Pill link */
-.pill-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: rgba(15, 23, 42, 0.8);
-  color: var(--text-main);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-}
-.pill-link:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  transform: translateY(-1px);
+html{
+    scroll-behavior:smooth;
 }
 
-/* CARD */
-.card {
-  background: linear-gradient(145deg, rgba(17, 32, 63, 0.96), rgba(17, 32, 63, 0.9));
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-soft);
-  padding: 18px 18px 20px;
-  margin-bottom: 24px;
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-}
-.card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
-  border-color: rgba(56, 189, 248, 0.35);
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
 }
 
-/* SECTION TITLES */
-.section-title {
-  font-family: 'Space Grotesk';
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-title span {
-  width: 32px;
-  height: 1px;
-  background: linear-gradient(to right, var(--accent), transparent);
+.container{
+    max-width:var(--max);
+    margin:auto;
+    padding:0 24px;
 }
 
-/* SUMMARY DIVIDER */
-.summary-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--accent), transparent);
-  margin: 20px 0;
+section{
+    padding:80px 0;
 }
 
-/* SUMMARY WINS */
-.summary-wins {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px 32px;
-  margin-top: 24px;
-}
-.summary-wins .win {
-  text-align: center;
-  padding: 10px 8px;
-  border-radius: 12px;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid var(--border-subtle);
-  transition: var(--transition-fast);
-}
-.summary-wins .win:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
-  border-color: rgba(56, 189, 248, 0.4);
-}
-.summary-link {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 16px;
-}
-.summary-link a { margin-left: auto; margin-right: auto; }
-
-/* LEADERSHIP SNAPSHOT */
-.leadership-list {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px 24px;
-}
-.leadership-list li {
-  background: rgba(15, 23, 42, 0.85);
-  padding: 10px 12px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  font-size: 0.95rem;
+h1{
+    font-size:clamp(3rem,8vw,5rem);
+    line-height:1;
+    margin-bottom:20px;
 }
 
-/* CORE SKILLS */
-.tile-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.tile {
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  padding: 12px 13px;
-  transition: var(--transition-fast);
-}
-.tile:hover {
-  border-color: rgba(56, 189, 248, 0.4);
-  transform: translateY(-2px);
-}
-.tile-title {
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.tile-title .icon {
-  font-size: 1rem;
-  color: var(--accent);
+h2{
+    font-size:2rem;
+    margin-bottom:20px;
 }
 
-/* Hover reveal */
-.tile-detail {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
-}
-.tile:hover .tile-detail {
-  max-height: 200px;
-  opacity: 1;
+h3{
+    font-size:1.15rem;
 }
 
-/* EXPERIENCE */
-.experience-grid { display: grid; gap: 16px; }
-
-.hover-summary { margin-bottom: 10px; }
-
-.hover-detail {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+p{
+    color:var(--muted);
 }
 
-.hover-tile:hover .hover-detail {
-  max-height: 500px;
-  opacity: 1;
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
 }
 
-/* MAROPS (condensed) */
-.marops-list {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 12px;
-}
-.marops-list li {
-  background: rgba(15, 23, 42, 0.85);
-  padding: 10px 12px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  margin-bottom: 10px;
-  font-size: 0.95rem;
+.hero-content{
+    max-width:850px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .tile-grid { grid-template-columns: 1fr; }
-  .leadership-list { grid-template-columns: 1fr; }
-  .summary-wins { grid-template-columns: repeat(2, 1fr); }
+.hero-tagline{
+    font-size:clamp(1.3rem,3vw,2rem);
+    font-weight:600;
+    color:var(--accent);
+    margin-bottom:24px;
 }
+
+.hero-sub{
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--muted);
+    max-width:750px;
+}
+
+.hero-links{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.btn{
+    text-decoration:none;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    padding:12px 18px;
+    border-radius:999px;
+    transition:.25s;
+}
+
+.btn:hover{
+    background:var(--accent);
+    color:white;
+}
+
+.section-title{
+    margin-bottom:40px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px;
+    box-shadow:var(--shadow);
+}
+
+.stat-number{
+    font-size:2rem;
+    font-weight:800;
+    color:var(--accent);
+}
+
+.engine{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:40px;
+}
+
+.engine-flow{
+    display:grid;
+    gap:12px;
+    justify-content:center;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.flow-step{
+    padding:12px 18px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:#fff;
+}
+
+.arrow{
+    color:var(--accent);
+    font-weight:bold;
+}
+
+.tools{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tool{
+    border:1px solid var(--border);
+    padding:10px 15px;
+    border-radius:999px;
+    background:white;
+}
+
+.accordion{
+    margin-top:20px;
+}
+
+.accordion-item{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.accordion-header{
+    width:100%;
+    border:none;
+    background:white;
+    padding:28px;
+    text-align:left;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.accordion-header h2{
+    margin:0;
+}
+
+.accordion-content{
+    display:none;
+    padding:0 28px 28px;
+}
+
+.accordion-content.active{
+    display:block;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+}
+
+.project-card{
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+}
+
+.placeholder{
+    height:180px;
+    border-radius:12px;
+    border:2px dashed var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.metric{
+    color:var(--accent);
+    font-weight:700;
+    margin:10px 0;
+}
+
+.links{
+    margin-top:15px;
+}
+
+.links a{
+    display:block;
+    text-decoration:none;
+    color:var(--accent);
+    margin-bottom:6px;
+}
+
+.timeline{
+    display:grid;
+    gap:18px;
+}
+
+.timeline-item{
+    border-left:3px solid var(--accent);
+    padding-left:18px;
+}
+
+.contact{
+    text-align:center;
+}
+
+footer{
+    padding:60px 0;
+    text-align:center;
+    color:var(--muted);
+}
+
+@media(max-width:768px){
+
+.hero{
+    min-height:auto;
+    padding-top:100px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
-<div class="page">
 
-<div class="nav-wrapper">
-  <nav>
-    <a href="#summary">Summary</a>
-    <a href="#leadership">Leadership</a>
-    <a href="#core-skills">Core Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#marops">MarOps</a>
-  </nav>
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+
+<h1>William (Monty) Montgomery</h1>
+
+<div class="hero-tagline">
+I turn internal knowledge into repeatable content systems that drive real leads.
 </div>
 
-<header>
-  <div class="name">William (Monty) Montgomery</div>
+<p class="hero-sub">
+Part strategist, part operator, part builder. I design the systems that turn expertise into revenue-generating content programs.
+</p>
 
-  <div class="tagline">
-    Organic Growth Strategy · SEO/AI Search · Content Leadership · MarOps
-  </div>
+<div class="hero-links">
+<a href="https://www.linkedin.com/in/william-a-montgomery/" target="_blank" class="btn">LinkedIn</a>
+<a href="mailto:monty.montgomery0401@gmail.com" class="btn">Email</a>
+<a href="#" class="btn">Resume PDF</a>
+</div>
 
-  <div class="meta">
-    <span>San Diego, CA</span>
-    <span>[714] 642‑7285</span>
-    <span>
-      <a class="pill-link" href="mailto:monty.montgomery0401@gmail.com">
-        monty.montgomery0401@gmail.com
-      </a>
-    </span>
-    <span>
-      <a class="pill-link" href="https://www.linkedin.com/in/william-a-montgomery/" target="_blank">
-        LinkedIn
-      </a>
-    </span>
-  </div>
-</header>
-
-<main>
-
-<section id="summary" class="card">
-  <div class="section-title"><span></span>Summary</div>
-
-  <p>
-    I build and lead the organic growth engine, combining content strategy, SEO/AI search, RevOps alignment, and marketing automation to drive pipeline, visibility, and operational scale. Partner closely with Sales, Product, and RevOps to define messaging, prioritize funnel initiatives, and execute quarterly content roadmaps that support GTM goals. I also contribute to hiring, mentor marketers on StoryBrand, and lead cross-functional workflows that accelerate execution and improve organizational velocity.
-  </p>
-
-  <div class="summary-divider"></div>
+</div>
+</div>
 </section>
 
-<section id="leadership" class="card">
-  <div class="section-title"><span></span>Leadership Snapshot</div>
+<section>
+<div class="container">
 
-  <ul class="leadership-list">
-    <li>Helped hire a social media manager alongside Head of Marketing.</li>
-    <li>Staffed and coordinated freelance writers during 2025–2026 site migration.</li>
-    <li>Mentored marketers on StoryBrand at KWSM and Avantiico.</li>
-    <li>Ran quarterly content planning aligned to GTM priorities.</li>
-    <li>Presented content performance and AI search strategy to executive leadership.</li>
-    <li>Cut campaign copy production cycles from ~30 days to 2 days.</li>
-  </ul>
+<h2 class="section-title">Featured Impact</h2>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<div class="stat-number">$17M+</div>
+Pipeline Influenced
+</div>
+
+<div class="stat-card">
+<div class="stat-number">1.2M+</div>
+Organic Clicks
+</div>
+
+<div class="stat-card">
+<div class="stat-number">47 → 363</div>
+AI Citations / Day
+</div>
+
+<div class="stat-card">
+<div class="stat-number">8 → 35</div>
+Pages Cited / Day
+</div>
+
+<div class="stat-card">
+<div class="stat-number">24%</div>
+Campaign Conversion Rate
+</div>
+
+<div class="stat-card">
+<div class="stat-number">25 Assets</div>
+Shipped in 24 Hours
+</div>
+
+</div>
+</div>
 </section>
 
-<section class="card">
-  <div class="section-title"><span></span>Key Wins</div>
+<section>
+<div class="container">
 
-  <div class="summary-wins">
+<h2 class="section-title">The Content Engine</h2>
 
-    <div class="win">
-      <div class="win-number">$17M+</div>
-      <div class="win-label">Pipeline Generated</div>
-    </div>
+<div class="engine">
 
-    <div class="win">
-      <div class="win-number">1.2M</div>
-      <div class="win-label">Clicks from One Blog</div>
-    </div>
+<div class="engine-flow">
 
-    <div class="win">
-      <div class="win-number">79 → 375</div>
-      <div class="win-label">Monthly Conversions QoQ</div>
-    </div>
+<div class="flow-step">SME Interview</div>
+<div class="arrow">↓</div>
 
-    <div class="win">
-      <div class="win-number">30 → 600/day</div>
-      <div class="win-label">AI Search Citations</div>
-    </div>
+<div class="flow-step">Business Objective</div>
+<div class="arrow">↓</div>
 
-    <div class="win">
-      <div class="win-number">2025</div>
-      <div class="win-label">BrightonSEO Speaker</div>
-    </div>
+<div class="flow-step">Campaign Strategy</div>
+<div class="arrow">↓</div>
 
-    <div class="win">
-      <div class="win-number">25 Assets · 1 Day</div>
-      <div class="win-label">Gartner MQ Campaign</div>
-    </div>
+<div class="flow-step">Destination Asset</div>
+<div class="arrow">↓</div>
 
-  </div>
+<div class="flow-step">Landing Page</div>
+<div class="arrow">↓</div>
 
-  <div class="summary-link">
-    <a class="pill-link"
-       href="https://brightonseo.com/events/san-diego-2025/talks/eeat-your-tofu-why-topoffunnel-content-still-matters"
-       target="_blank">
-       BrightonSEO Speaker Profile
-    </a>
-  </div>
+<div class="flow-step">SEO + AEO Research</div>
+<div class="arrow">↓</div>
+
+<div class="flow-step">Supporting Blogs</div>
+<div class="arrow">↓</div>
+
+<div class="flow-step">Email Sequences</div>
+<div class="arrow">↓</div>
+
+<div class="flow-step">Social Distribution</div>
+<div class="arrow">↓</div>
+
+<div class="flow-step">Paid Promotion</div>
+<div class="arrow">↓</div>
+
+<div class="flow-step">Outbound</div>
+<div class="arrow">↓</div>
+
+<div class="flow-step">Pipeline</div>
+
+</div>
+
+<div class="tools">
+<div class="tool">Otter</div>
+<div class="tool">Ahrefs</div>
+<div class="tool">Claude</div>
+<div class="tool">HubSpot</div>
+<div class="tool">Analytics</div>
+<div class="tool">SME Knowledge</div>
+</div>
+
+</div>
+
+</div>
 </section>
 
-<section id="core-skills" class="card">
-  <div class="section-title"><span></span>Core Skills</div>
+<section>
+<div class="container">
 
-  <div class="tile-grid">
+<h2 class="section-title">Work</h2>
 
-    <div class="tile">
-      <div class="tile-title">
-        <span class="icon">📝</span>
-        Organic Growth Strategy
-      </div>
-      <div class="tile-summary">
-        Build and lead the organic growth engine across SEO/AI search, content strategy, RevOps alignment, and funnel optimization.
-      </div>
-    </div>
+<div class="accordion">
 
-    <div class="tile">
-      <div class="tile-title">
-        <span class="icon">💬</span>
-        Content Leadership & Messaging
-      </div>
-      <div class="tile-summary">
-        Guide teams and SMEs through StoryBrand, ICP alignment, and cross-functional messaging frameworks.
-      </div>
-    </div>
+<div class="accordion-item">
+<button class="accordion-header">
+<h2>Grow</h2>
+<span>+</span>
+</button>
 
-    <div class="tile">
-      <div class="tile-title">
-        <span class="icon">🔍</span>
-        AI Search & Technical SEO
-      </div>
-      <div class="tile-summary">
-        Architect content systems optimized for AI Overviews, AI Answers, and model-specific visibility.
-      </div>
-    </div>
+<div class="accordion-content">
 
-    <div class="tile">
-      <div class="tile-title">
-        <span class="icon">🤖</span>
-        Marketing Automation & MarOps
-      </div>
-      <div class="tile-summary">
-        Design internal automation systems that reduce vendor spend, accelerate production, and improve reporting accuracy.
-      </div>
-    </div>
+<div class="project-grid">
 
-    <div class="tile">
-      <div class="tile-title">
-        <span class="icon">📊</span>
-        Analytics & Attribution
-      </div>
-      <div class="tile-summary">
-        Own content performance, pipeline attribution, and executive reporting across HubSpot, GA4, Looker, and AI search analytics.
-      </div>
-    </div>
+<div class="project-card">
+<div class="placeholder">Search Growth Engine</div>
+<h3>Search Growth Engine</h3>
+<p>Built SEO and AI search systems focused on visibility, rankings, and qualified demand.</p>
+<div class="metric">~70% of target initiatives reach positions #1-3.</div>
+</div>
 
-    <div class="tile">
-      <div class="tile-title">
-        <span class="icon">🤝</span>
-        Cross-Functional GTM Alignment
-      </div>
-      <div class="tile-summary">
-        Partner closely with Sales, Product, and RevOps to define priorities, build roadmaps, and execute integrated campaigns.
-      </div>
-    </div>
+<div class="project-card">
+<div class="placeholder">Migration Visual</div>
+<h3>Website Rebuild + Migration</h3>
+<p>Led copy, SEO strategy, keyword research and migration planning.</p>
+<div class="metric">47 → 363 AI citations/day</div>
+</div>
 
-  </div>
+<div class="project-card">
+<div class="placeholder">Industry Programs</div>
+<h3>Industry Content Programs</h3>
+<p>Healthcare, Financial Services, Retail, Manufacturing and Higher Education.</p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-header">
+<h2>Convert</h2>
+<span>+</span>
+</button>
+
+<div class="accordion-content">
+
+<div class="project-grid">
+
+<div class="project-card">
+<div class="placeholder">Gartner MQ Screenshot</div>
+<h3>Gartner MQ Campaign</h3>
+<p>Highest-performing analyst campaign in company history.</p>
+<div class="metric">60% net-new audience</div>
+
+<div class="links">
+<a target="_blank" href="https://www.1kosmos.com/resources/industry-analyst-reports/gartner-magic-quadrant-identity-verification-2026">Landing Page</a>
+
+<a target="_blank" href="https://www.1kosmos.com/resources/blog/1kosmos-named-leader-gartner-magic-quadrant-identity-verification-2026">Supporting Blog</a>
+</div>
+</div>
+
+<div class="project-card">
+<div class="placeholder">CISO Edge Screenshot</div>
+<h3>CISO Edge Campaign</h3>
+<div class="metric">24% Conversion Rate</div>
+
+<div class="links">
+
+<a target="_blank" href="https://www.1kosmos.com/resources/industry-analyst-reports/gartner-ciso-edge-employee-onboarding-identity-verification">Landing Page</a>
+
+<a target="_blank" href="https://www.1kosmos.com/resources/blog/nation-state-actors-threatening-hiring-process">Nation-State Actors Blog</a>
+
+<a target="_blank" href="https://www.1kosmos.com/resources/blog/preventing-employee-onboarding-fraud-with-identity-verification">Onboarding Fraud Blog</a>
+
+</div>
+</div>
+
+<div class="project-card">
+<div class="placeholder">Duo Campaign Screenshot</div>
+<h3>Duo Alternative Campaign</h3>
+<p>SEO, paid, outbound and lifecycle marketing working together.</p>
+
+<div class="links">
+
+<a target="_blank" href="https://www.1kosmos.com/duo-alternative">Landing Page</a>
+
+<a target="_blank" href="https://www.1kosmos.com/resources/blog/best-duo-security-alternatives-2026">Blog 1</a>
+
+<a target="_blank" href="https://www.1kosmos.com/resources/blog/replace-duo-with-1kosmos">Blog 2</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-header">
+<h2>Scale</h2>
+<span>+</span>
+</button>
+
+<div class="accordion-content">
+
+<div class="project-grid">
+
+<div class="project-card">
+<div class="placeholder">Dashboard Screenshot</div>
+<h3>Executive Marketing Intelligence System</h3>
+<p>Unified executive reporting across traffic, AI visibility, pipeline and paid media.</p>
+</div>
+
+<div class="project-card">
+<div class="placeholder">Workflow Diagram</div>
+<h3>Content Operations System</h3>
+<p>Automation, editorial workflows, SME knowledge transfer and scalable production.</p>
+</div>
+
+<div class="project-card">
+<div class="placeholder">POC Diagram</div>
+<h3>AI Content Operations Evaluation</h3>
+<p>Evaluated enterprise AI content operations platforms and workflow opportunities.</p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
 </section>
 
-<section id="experience" class="card">
-  <div class="section-title"><span></span>Experience</div>
+<section>
+<div class="container">
 
-  <div class="experience-grid">
+<h2 class="section-title">Career</h2>
 
-    <!-- 1Kosmos -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Content Marketing Manager · 1Kosmos</div>
-        <div class="card-subtitle">Nov 2025 – Present</div>
-      </div>
-      <div class="hover-summary">
-        Lead the organic growth engine across content, SEO/AI search, RevOps alignment, and marketing automation.
-      </div>
-      <div class="hover-detail">
-        <ul>
-          <li>Set quarterly content strategy aligned to GTM priorities and pipeline goals.</li>
-          <li>Partner closely with Sales, Product, and RevOps on messaging and funnel priorities.</li>
-          <li>Cut campaign copy production cycles from ~30 days to 2 days, improving speed-to-market for launches.</li>
-          <li>Improved AI search visibility from ~30 citations/day to ~600/day within six months.</li>
-          <li>Replaced a $7K/mo SEO agency with internal automation systems.</li>
-          <li>Delivered Gartner MQ campaign in 24 hours using templates and automation.</li>
-          <li>Mentored marketers on StoryBrand and messaging clarity.</li>
-        </ul>
-      </div>
-    </article>
+<div class="timeline">
 
-    <!-- Avantiico -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">SEO & Content Lead · Avantiico</div>
-        <div class="card-subtitle">Dec 2024 – Nov 2025</div>
-      </div>
-      <div class="hover-summary">
-        Led SEO, content strategy, and site architecture for a BricksBuilder rebuild optimized for LLM visibility.
-      </div>
-      <div class="hover-detail">
-        <ul>
-          <li>Ranked multiple high-intent D365 topics #1–3 on Google.</li>
-          <li>Helped sign 50+ D365 licensing clients in five months.</li>
-          <li>Boosted sitewide organic CTR from 0.3% → 0.7%.</li>
-          <li>Built GA4 flows and Looker dashboards for AI traffic and funnel visibility.</li>
-          <li>Rolled out StoryBrand across sales, consulting, and marketing teams.</li>
-          <li>Mentored marketers on StoryBrand and messaging clarity.</li>
-        </ul>
-      </div>
-    </article>
+<div class="timeline-item">
+<strong>1Kosmos</strong><br>
+Content Marketing Manager
+</div>
 
-    <!-- The Edge Treatment Center -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Content Manager · The Edge Treatment Center</div>
-        <div class="card-subtitle">Mar 2024 – Nov 2024</div>
-      </div>
-      <div class="hover-summary">
-        High-volume medical and treatment content production with major traffic gains post-HCU volatility.
-      </div>
-      <div class="hover-detail">
-        <ul>
-          <li>Authored a doxycycline article that generated 1.5M clicks in 8 months.</li>
-          <li>Doubled organic traffic from 100K → 200K in 2–3 months.</li>
-          <li>Produced 2–3 long-form medical articles per day.</li>
-          <li>Built annual social strategy with SM manager; wrote YouTube scripts.</li>
-          <li>Managed freelancer content and enforced brand voice + on-page SEO.</li>
-        </ul>
-      </div>
-    </article>
+<div class="timeline-item">
+<strong>Avantiico</strong><br>
+SEO & Content Lead
+</div>
 
-    <!-- Dalrada -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Marketing Copywriter · Dalrada</div>
-        <div class="card-subtitle">Nov 2023 – Feb 2024</div>
-      </div>
-      <div class="hover-summary">
-        Sole copywriter across PPC ads, blogs, landing pages, emails, press releases, and executive thought leadership.
-      </div>
-      <div class="hover-detail">
-        <ul>
-          <li>Wrote and edited copy for Google Ads, LinkedIn Ads, and web refreshes.</li>
-          <li>Created technical SOPs and documentation for marketing workflows.</li>
-          <li>Collaborated with marketing leadership on landing page strategy and ad messaging.</li>
-        </ul>
-      </div>
-    </article>
+<div class="timeline-item">
+<strong>The Edge Treatment Center</strong><br>
+Content Manager
+</div>
 
-    <!-- KWSM -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Copywriter & Account Manager · KWSM</div>
-        <div class="card-subtitle">Oct 2021 – Nov 2023</div>
-      </div>
-      <div class="hover-summary">
-        Managed 4 high-touch clients directly, leading monthly strategy and reporting across web, social, email, and paid.
-      </div>
-      <div class="hover-detail">
-        <ul>
-          <li>Delivered a 300% traffic lift for a family law firm (62 → 249 sessions).</li>
-          <li>Added 78 first-page keywords in 6 months; doubled organic leads.</li>
-          <li>Wrote for 8–10 clients weekly across blogs, email, landing pages, press releases, and social calendars.</li>
-          <li>Contributed to an EVP campaign later nominated for a German marketing award.</li>
-          <li>Mentored marketers on StoryBrand and messaging clarity.</li>
-          <li>Worked across WordPress, HubSpot, Moz, Mailchimp, Buffer, Canva, Cision, and AI tools.</li>
-        </ul>
-      </div>
-    </article>
+<div class="timeline-item">
+<strong>KWSM</strong><br>
+Copywriter & Account Manager
+</div>
 
-    <!-- Samsung Semiconductor -->
-    <article class="card hover-tile">
-      <div class="card-header">
-        <div class="card-title">Freelance Copywriter · Samsung Semiconductor</div>
-        <div class="card-subtitle">Apr 2024 – Jun 2024</div>
-      </div>
-      <div class="hover-summary">
-        Contract role supporting employer branding and internal communications.
-      </div>
-      <div class="hover-detail">
-        <ul>
-          <li>Wrote internal social content, newsletters, and site copy.</li>
-          <li>Handled proofing and editorial cleanup for internal comms.</li>
-          <li>Delivered fast-turn content for multiple internal teams.</li>
-        </ul>
-      </div>
-    </article>
+</div>
 
-  </div>
+</div>
 </section>
 
-<section id="marops" class="card">
-  <div class="section-title"><span></span>AI & Marketing Automation</div>
+<section class="contact">
+<div class="container">
 
-  <ul class="marops-list">
-    <li>Replaced a $7K/mo SEO agency with internal automation while improving AI search visibility from ~30 citations/day to ~600/day within six months.</li>
+<h2>Let's Connect</h2>
 
-    <li>Automated blog production workflows that produced 4 of the company’s top-performing AI search articles.</li>
+<p style="margin-bottom:25px;">
+Open to conversations around growth, content, SEO, AI search and marketing operations.
+</p>
 
-    <li>Built internal systems for datasheets, social scheduling, and visitor intelligence that reduced manual lift and improved cross-functional alignment.</li>
+<a href="mailto:monty.montgomery0401@gmail.com" class="btn">Email Me</a>
 
-    <li>Enabled faster GTM execution by compressing campaign copy cycles from ~30 days to 2 days.</li>
-
-    <li>Improved reporting accuracy and operational visibility for Sales, Product, and RevOps through automated intelligence summaries.</li>
-  </ul>
+</div>
 </section>
-
-<section id="education" class="card">
-  <div class="section-title"><span></span>Education</div>
-
-  <p><strong>California State University, Long Beach</strong></p>
-  <p>B.A. Communication Studies – 2020 · GPA: 3.9</p>
-
-  <ul style="margin-top: 10px; list-style: none; padding-left: 0;">
-    <li>• Member, Student Communication Association (SCA)</li>
-    <li>• Speech Tutor, Hauth Speech Center</li>
-  </ul>
-</section>
-
-</main>
 
 <footer>
-  © 2026 William (Monty) Montgomery – Portfolio & Resume
+Built by Monty Montgomery.
 </footer>
 
-</div>
+<script>
+document.querySelectorAll(".accordion-header").forEach(btn => {
+
+btn.addEventListener("click", () => {
+
+const content = btn.nextElementSibling;
+
+content.classList.toggle("active");
+
+});
+});
+</script>
+
 </body>
 </html>
